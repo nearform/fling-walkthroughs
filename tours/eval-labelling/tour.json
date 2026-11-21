@@ -1,5 +1,5 @@
 {
   "title": "Label an eval set · a Fling walkthrough",
-  "description": "You have a JSONL of model outputs and need people to label them. Ask Claude to get it labelled. It makes a page per sample, builds a blind labelling form with you, and merges every label back into the dataset.",
+  "description": "You have a JSONL of model outputs and need people to label them. Ask Claude to get it labelled. It makes a page per sample, builds a blind labelling form with you, and merges every label back into the dataset. The same forms collect structured answers about anything on a Fling.",
   "poster": "shots/label-fail.png"
 }

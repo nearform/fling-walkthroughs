@@ -12,10 +12,10 @@ window.TOUR = {
   titleHtml: 'Model outputs need <span class="rainbow-text">human judges</span>.',
   eyebrow: 'Fling walkthrough · 4 of 5',
   problem: 'You have a JSONL of model outputs and need people to label them. Spreadsheets mangle long answers, a labelling tool takes days to set up, and labellers who can see each other’s answers stop judging independently.',
-  lead: 'Ask Claude to get it labelled. It makes a page per sample, builds a blind labelling form with you, and merges every label back into the dataset.',
-  chips: ['Claude Code', 'A page per sample', 'Forms', 'Blind labels', 'Save and next', 'Flag a passage', 'CSV / JSONL'],
-  outro: 'Pages for people to read, a form for them to answer, and the answers back as data. No spreadsheet, no labelling tool to set up, nothing to host.',
-  endTitle: 'Labels in, data out',
+  lead: 'Ask Claude to get it labelled. It makes a page per sample, builds a blind labelling form with you, and merges every label back into the dataset. Evals are one example: the same forms collect structured answers about anything you put on a Fling.',
+  chips: ['Claude Code', 'A page per sample', 'Forms for anything', 'Blind labels', 'Save and next', 'Flag a passage', 'CSV / JSONL'],
+  outro: 'Pages for people to read, a form for them to answer, and the answers back as data. Labels today; ratings, sign-offs, comparisons or a survey tomorrow, on any site. No spreadsheet, no form tool to set up, nothing to host.',
+  endTitle: 'Any question in, data out',
   personas: {
     you: { name: 'Sam Rivera', initials: 'SR', label: 'You (Sam), labelling' },
     reviewer: { name: 'Ana Lopez', initials: 'AL', label: 'Ana, labelling' },
@@ -59,7 +59,7 @@ window.TOUR = {
     {
       chapter: 'The form',
       caption: 'Claude asks what a label should say, and builds the form',
-      note: 'The form lives in fling.forms.json beside the pages, and is never served. Blind: each labeller sees only their own answers.',
+      note: 'The form is JSON Schema, in fling.forms.json beside the pages, and is never served. Blind: each labeller sees only their own answers.',
       layout: 'term',
       hold: 10000,
       term: {
@@ -174,6 +174,15 @@ window.TOUR = {
           { say: 'The failures: s03 makes up a reason for a card decline, s07 promises a 99.99% SLA on every plan (Ana flagged it as a blocker: Starter has no SLA), and s12 scolds an angry customer. s10 gets data residency only partly right. The biggest problem is contradicting the policy (3 labels), then making things up and missing the question (2 each).' },
         ],
       },
+    },
+    // ---------- beyond evals ----------
+    {
+      chapter: 'Beyond evals',
+      caption: 'Not just labels: a form for any question',
+      note: 'A form is JSON Schema, so it can ask anything: a score against a rubric, A or B, a sign-off, a survey, a typed comment on a passage. One answer per page or one per comment, open or blind, on some pages or all. Every answer is stored with the site, for Claude to read and for you to download.',
+      layout: 'shot',
+      hold: 9000,
+      shot: { src: 'shots/progress.png', url: `${HOST}/sites/${SITE}/responses`, as: 'you', ring: [22.3, 20.5, 70.6, 58.5] },
     },
   ],
 }
