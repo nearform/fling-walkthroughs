@@ -47,7 +47,7 @@
   .home .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
   /* "isn't this just Artifacts?": a native popover, centred over a dimmed page */
   .vs {
-    inline-size: min(44rem, calc(100% - 2rem)); max-block-size: calc(100svh - 2rem); overflow: auto;
+    inline-size: min(64rem, calc(100% - 2rem)); max-block-size: calc(100svh - 2rem); overflow: auto;
     margin: auto; padding: clamp(1.25rem, 1rem + 2vw, 2.25rem);
     border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); color: var(--ink);
     box-shadow: 0 30px 80px -30px oklch(0% 0 0 / 0.6);
@@ -56,7 +56,7 @@
   .vs::backdrop { background: oklch(0% 0 0 / 0.45); }
   .vs h2 { font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.2rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800; }
   .vs .intro { color: var(--muted); max-inline-size: 60ch; }
-  .vs dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr)); gap: 1rem 1.5rem; }
+  .vs dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); gap: 1.1rem 1.75rem; }
   .vs dt { font-weight: 750; margin-block-end: 0.2rem; }
   .vs dd { color: var(--muted); margin: 0; }
   .vs .close { position: absolute; inset-block-start: 0.9rem; inset-inline-end: 0.9rem; }
@@ -128,12 +128,14 @@
   <button class="icon-btn close" popovertarget="vs-artifacts" popovertargetaction="hide" aria-label="Close">✕</button>
   <span class="eyebrow">Fair question</span>
   <h2>Isn’t this just Artifacts?</h2>
-  <p class="intro">Artifacts are great for trying something out inside a chat. Fling is for when what your agent made has to live somewhere, for people who were never in that chat.</p>
+  <p class="intro">Artifacts are great for trying something out inside a chat. Fling is for the real work that comes after: getting it reviewed, collecting answers, running it and keeping it, with your team.</p>
   <dl>
-    <div><dt>You own it</dt><dd>It runs on your organisation’s own Fling, at your own address. A site belongs to you and your team, not to one chat or one person’s account.</dd></div>
-    <div><dt>Any agent, any account</dt><dd>Claude Code, Claude’s app, any other agent with MCP, the CLI or CI all publish to the same sites. Anyone you allow can update a site from their own agent.</dd></div>
-    <div><dt>Secured by who you are</dt><dd>People sign in with your company identity. Each site opens to only you, everyone signed in, named groups or people, or the public: you choose.</dd></div>
-    <div><dt>Much more than a page</dt><dd>Comments pinned to the page that your agent reads and acts on, a Path per ticket, forms for sign-off and labels, a small server with its own secrets, versions and rollback, and logs.</dd></div>
+    <div><dt>Reviews, live and in place</dt><dd>People comment on the live page, pinned to the words they mean. Your agent reads the comments, makes the fix and resolves each thread on the version that fixed it.</dd></div>
+    <div><dt>Structured data, not just comments</dt><dd>Forms collect labels, scores, sign-offs or a survey on any page. Every answer is stored with the site, for your agent to read and for you to download as CSV or JSONL.</dd></div>
+    <div><dt>Servers that do real work</dt><dd>Put a small server beside the page. It keeps API keys as secrets, knows who is calling and writes logs, and it’s versioned and rolled back with the page.</dd></div>
+    <div><dt>Built for teams</dt><dd>Open a site to groups, not just people. A team site gives each ticket its own page, with its own owners, versions, review and sign-off.</dd></div>
+    <div><dt>Part of how you ship</dt><dd>Publish plans, specs and previews from CI on every pull request, or from any agent that supports MCP or can run the CLI. Every publish is a version you can roll back.</dd></div>
+    <div><dt>You own it</dt><dd>Your organisation’s own Fling, at your own address, behind your company sign-in. The sites, comments and answers stay with you, not in one chat or one person’s account.</dd></div>
   </dl>
   <a class="btn" href="get-started/">▶&nbsp; See it in the first walkthrough</a>
 </div>
