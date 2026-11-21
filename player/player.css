@@ -353,6 +353,21 @@ p { margin: 0; }
 .card-inner .problem { font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem); max-inline-size: 52ch; text-wrap: pretty; }
 .card-inner .eyebrow.how { margin-block-start: 0.4rem; }
 .card-inner .lead { font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem); color: var(--muted); max-inline-size: 52ch; }
+/* the title card: text and the tour's poster side by side when there is room, stacked when not */
+.card-inner.intro {
+  inline-size: min(88rem, 100%); align-items: center; gap: clamp(1.25rem, 0.5rem + 2.5vw, 3.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(21rem, 100%), 1fr));
+}
+.intro-text { display: grid; gap: 0.95rem; justify-items: start; }
+.card-inner.intro h1 { font-size: clamp(2rem, 1.1rem + 2.6vw, 3.6rem); }
+.card-inner.intro :is(.problem, .lead) { font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem); max-inline-size: 58ch; }
+.intro-shot {
+  display: block; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  background: var(--card); cursor: pointer; box-shadow: 0 24px 48px -28px oklch(0% 0 0 / 0.5);
+}
+.intro-shot img { display: block; inline-size: 100%; block-size: auto; }
+@media (prefers-reduced-motion: no-preference) { .intro-shot { transition: translate 200ms var(--ease-out), box-shadow 200ms var(--ease-out); } }
+@media (hover: hover) and (pointer: fine) { .intro-shot:hover { translate: 0 -3px; box-shadow: 0 30px 56px -28px oklch(0% 0 0 / 0.55); } }
 .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .chip {
   font-size: 0.85rem; font-weight: 600;

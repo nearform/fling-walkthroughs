@@ -111,15 +111,25 @@
   const drawCard = kind => {
     const inner = $('div', { className: 'card-inner' })
     if (kind === 'intro') {
-      // problem first: the headline and why it hurts, then how the walkthrough solves it
-      inner.innerHTML = `<span class="eyebrow">${esc(TOUR.eyebrow ?? 'A Fling walkthrough')} · ${esc(TOUR.title)}</span>
+      // problem first: the headline and why it hurts, then how the walkthrough solves it; beside
+      // it the tour's poster shot (two columns when there is room)
+      inner.classList.add('intro')
+      const text = $('div', { className: 'intro-text' })
+      text.innerHTML = `<span class="eyebrow">${esc(TOUR.eyebrow ?? 'A Fling walkthrough')} · ${esc(TOUR.title)}</span>
         <h1>${TOUR.titleHtml ?? esc(TOUR.title)}</h1>
         ${TOUR.problem ? `<p class="problem">${esc(TOUR.problem)}</p><span class="eyebrow how">How it works</span>` : ''}
         <p class="lead">${esc(TOUR.lead)}</p>
         <div class="chips">${(TOUR.chips ?? []).map(c => `<span class="chip">${esc(c)}</span>`).join('')}</div>`
       const start = $('button', { className: 'btn', innerHTML: '▶&nbsp; Play the walkthrough' })
       start.onclick = () => go(1, true)
-      inner.append(start)
+      text.append(start)
+      inner.append(text)
+      const poster = TOUR.poster ?? TOUR.steps.find(s => s.shot)?.shot.src
+      if (poster) {
+        const shot = $('button', { className: 'intro-shot', ariaLabel: 'Play the walkthrough' }, $('img', { src: poster, alt: '' }))
+        shot.onclick = () => go(1, true)
+        inner.append(shot)
+      }
     } else {
       inner.innerHTML = `<span class="eyebrow">Done</span><h1>${esc(TOUR.endTitle ?? 'Your turn')}</h1>
         <p class="lead">${esc(TOUR.outro ?? '')}</p>`

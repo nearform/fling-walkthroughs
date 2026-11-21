@@ -38,7 +38,8 @@ for (const t of tours) {
     for (const k of Object.keys(all)) all[k] = all[k].filter(p => !p.skip).map(p => ({ ...p, parts: p.parts.map(q => ({ ...q, from: q.text, text: swap(q.text) })) }))
     patches = `\nwindow.TOUR_PATCHES = ${JSON.stringify(all)}\n`
   }
-  writeFileSync(`${out}/scenes.js`, swap(readFileSync(`tours/${t}/scenes.js`, 'utf8')) + patches)
+  const poster = `\nwindow.TOUR.poster = ${JSON.stringify(meta.poster)}\n` // the title card shows it
+  writeFileSync(`${out}/scenes.js`, swap(readFileSync(`tours/${t}/scenes.js`, 'utf8')) + poster + patches)
   cpSync(`tours/${t}/shots`, `${out}/shots`, { recursive: true })
   for (const f of ['player.css', 'player.js', 'tours.js']) cpSync(`player/${f}`, `${out}/player/${f}`)
   console.log(`built ${out}`)
