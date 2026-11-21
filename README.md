@@ -76,3 +76,5 @@ fling deploy ./demos/q3-support-report 2>&1 | node capture/redact-text.mjs > tra
 ## Contributing
 
 See [CLAUDE.md](CLAUDE.md) for how the tours are put together and the rules for changing them. Claude Code reads it automatically, so "add a step to team-site showing X" or "retake the eval-labelling shots" works as a request.
+
+[![banner](https://raw.githubusercontent.com/nearform/.github/refs/heads/master/assets/os-banner-green.svg)](https://www.nearform.com/contact/?utm_source=open-source&utm_medium=banner&utm_campaign=os-project-pages)
