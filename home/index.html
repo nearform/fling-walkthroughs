@@ -59,6 +59,9 @@
   .vs dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); gap: 1.1rem 1.75rem; }
   .vs dt { font-weight: 750; margin-block-end: 0.2rem; }
   .vs dd { color: var(--muted); margin: 0; }
+  .vs .foot { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+  .vs .oss { font-weight: 750; color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.25em; text-decoration-color: var(--line); }
+  @media (hover: hover) and (pointer: fine) { .vs .oss:hover { text-decoration-color: currentColor; } }
   .vs .close { position: absolute; inset-block-start: 0.9rem; inset-inline-end: 0.9rem; }
   .vs { position: fixed; }
   @media (prefers-reduced-motion: no-preference) {
@@ -137,7 +140,10 @@
     <div><dt>Part of how you ship</dt><dd>Publish plans, specs and previews from CI on every pull request, or from any agent that supports MCP or can run the CLI. Every publish is a version you can roll back.</dd></div>
     <div><dt>You own it</dt><dd>Your organisation’s own Fling, at your own address, behind your company sign-in. The sites, comments and answers stay with you, not in one chat or one person’s account.</dd></div>
   </dl>
-  <a class="btn" href="get-started/">▶&nbsp; See it in the first walkthrough</a>
+  <div class="foot">
+    <a class="btn" href="get-started/">▶&nbsp; See it in the first walkthrough</a>
+    <a class="oss" href="https://github.com/nearform/fling" target="_blank" rel="noopener">… and open source! <span aria-hidden="true">↗</span></a>
+  </div>
 </div>
 <script>
   document.getElementById('theme').onclick = () => {
