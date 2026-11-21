@@ -1,6 +1,6 @@
 # Fling walkthroughs
 
-Five short, self-playing walkthroughs of [Fling](https://infinitesoftwarefactory.com) used with Claude. Each one starts with a problem, then plays through how Fling solves it, with a terminal (or Claude chat) beside a browser:
+Five short, self-playing walkthroughs of [Fling](https://github.com/nearform/fling) used with Claude. Each one starts with a problem, then plays through how Fling solves it, with a terminal (or Claude chat) beside a browser:
 
 | Tour | The problem | How |
 | --- | --- | --- |
@@ -11,6 +11,8 @@ Five short, self-playing walkthroughs of [Fling](https://infinitesoftwarefactory
 | `site-server` | It works on localhost. Now share it. | A small server beside the page: an API key, Claude, logs |
 
 The tours use Claude (Claude Code and Claude’s app), but Fling isn’t tied to it: any agent that supports MCP, or that can run the `fling` CLI and use skills, can do the same.
+
+Fling isn’t a hosted service: you run it in your own cloud (AWS or Cloudflare), at an address like `fling.yourcompany.com`, and then point your agent or the CLI at it. See [Deploy](https://github.com/nearform/fling#deploy) in the Fling repo. The tours were recorded on one such Fling.
 
 Live at https://fling-tour.fling.labs.nearform.com.
 
