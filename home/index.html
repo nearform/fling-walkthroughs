@@ -44,6 +44,27 @@
   @media (hover: hover) and (pointer: fine) {
     .home .next-tours a:hover { translate: 0 -3px; box-shadow: 0 16px 36px -22px oklch(0% 0 0 / 0.55); }
   }
+  .home .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  /* "isn't this just Artifacts?": a native popover, centred over a dimmed page */
+  .vs {
+    inline-size: min(44rem, calc(100% - 2rem)); max-block-size: calc(100svh - 2rem); overflow: auto;
+    margin: auto; padding: clamp(1.25rem, 1rem + 2vw, 2.25rem);
+    border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); color: var(--ink);
+    box-shadow: 0 30px 80px -30px oklch(0% 0 0 / 0.6);
+  }
+  .vs:popover-open { display: grid; gap: 1rem; }
+  .vs::backdrop { background: oklch(0% 0 0 / 0.45); }
+  .vs h2 { font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.2rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800; }
+  .vs .intro { color: var(--muted); max-inline-size: 60ch; }
+  .vs dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr)); gap: 1rem 1.5rem; }
+  .vs dt { font-weight: 750; margin-block-end: 0.2rem; }
+  .vs dd { color: var(--muted); margin: 0; }
+  .vs .close { position: absolute; inset-block-start: 0.9rem; inset-inline-end: 0.9rem; }
+  .vs { position: fixed; }
+  @media (prefers-reduced-motion: no-preference) {
+    .vs:popover-open { animation: vs-in 220ms cubic-bezier(0.23, 1, 0.32, 1); }
+    @keyframes vs-in { from { opacity: 0; translate: 0 12px; } }
+  }
   .home footer { color: var(--muted); font-size: 0.9rem; text-align: center; }
 </style>
 </head>
@@ -65,7 +86,10 @@
           <p class="lead">Claude can make a report, a plan, a labelling set or a small app in minutes. Getting it to the right people, and their feedback back to Claude, is the slow part. Each walkthrough starts with one of those problems and shows how Fling, used from Claude, solves it.</p>
           <p class="agents">We show Claude here, but Fling works with any agent that supports MCP, or that can run the fling CLI and use skills.</p>
           <div class="chips"><span class="chip">Claude Code</span><span class="chip">Claude Desktop</span><span class="chip">Access</span><span class="chip">Review</span><span class="chip">Paths</span><span class="chip">Forms</span><span class="chip">Site servers</span></div>
-          <a class="btn" href="get-started/">▶&nbsp; Start with the first</a>
+          <div class="actions">
+            <a class="btn" href="get-started/">▶&nbsp; Start with the first</a>
+            <button class="btn ghost" popovertarget="vs-artifacts">Hang on, isn’t this just Artifacts?</button>
+          </div>
         </div>
         <a class="hero-shot" href="get-started/" aria-label="Play the first walkthrough">
           <img src="get-started/shots/review-comments.png" alt="A published report on its review page, with a colleague’s comments pinned to the words they are about">
@@ -99,6 +123,20 @@
 
   <footer>Recorded on a real Fling. The two people shown are real accounts under made-up names.</footer>
 </main>
+
+<div id="vs-artifacts" popover class="vs">
+  <button class="icon-btn close" popovertarget="vs-artifacts" popovertargetaction="hide" aria-label="Close">✕</button>
+  <span class="eyebrow">Fair question</span>
+  <h2>Isn’t this just Artifacts?</h2>
+  <p class="intro">Artifacts are great for trying something out inside a chat. Fling is for when what your agent made has to live somewhere, for people who were never in that chat.</p>
+  <dl>
+    <div><dt>You own it</dt><dd>It runs on your organisation’s own Fling, at your own address. A site belongs to you and your team, not to one chat or one person’s account.</dd></div>
+    <div><dt>Any agent, any account</dt><dd>Claude Code, Claude’s app, any other agent with MCP, the CLI or CI all publish to the same sites. Anyone you allow can update a site from their own agent.</dd></div>
+    <div><dt>Secured by who you are</dt><dd>People sign in with your company identity. Each site opens to only you, everyone signed in, named groups or people, or the public: you choose.</dd></div>
+    <div><dt>Much more than a page</dt><dd>Comments pinned to the page that your agent reads and acts on, a Path per ticket, forms for sign-off and labels, a small server with its own secrets, versions and rollback, and logs.</dd></div>
+  </dl>
+  <a class="btn" href="get-started/">▶&nbsp; See it in the first walkthrough</a>
+</div>
 <script>
   document.getElementById('theme').onclick = () => {
     const root = document.documentElement
