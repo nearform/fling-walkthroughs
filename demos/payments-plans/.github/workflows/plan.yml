@@ -1,0 +1,16 @@
+# Publishes the plan in a pull request as that ticket's Path on payments-plans.
+name: Publish plan
+on:
+  pull_request:
+    paths: ['plan/**']
+jobs:
+  fling:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npx @nearform/fling deploy ./plan --name payments-plans --path "${{ github.head_ref }}"
+        env:
+          FLING_URL: https://infinitesoftwarefactory.com
+          FLING_API_KEY: ${{ secrets.FLING_API_KEY }}

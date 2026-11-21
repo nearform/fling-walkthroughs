@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fling, in five walkthroughs</title>
+<meta name="description" content="Five short walkthroughs of Fling with Claude: your first fling, a team site with a Path per ticket, labelling an eval set, a site server that does real work, and Claude with no terminal.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fling, in five walkthroughs">
+<meta property="og:description" content="Your first fling, a team site with a Path per ticket, labelling an eval set, a site server that does real work, and Claude with no terminal.">
+<meta property="og:image" content="https://fling-tour.infinitesoftwarefactory.com/get-started/shots/review-pin.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23f0506e'/%3E%3Cstop offset='.5' stop-color='%23f5c542'/%3E%3Cstop offset='1' stop-color='%234f7cf7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="player.css">
+<style>
+  /* The home page is the tours' end card on its own: the same frame, one card filling the page. */
+  .home { block-size: auto; min-block-size: 100svh; grid-template-rows: auto minmax(0, 1fr) auto; }
+  .home .card-slot { place-items: center; padding-block: clamp(1.25rem, 0.5rem + 3vh, 2.75rem); }
+  .home .card-inner { inline-size: min(72rem, 100%); gap: 1.1rem; }
+  .home .next-tours { grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr)); gap: 1rem; }
+  .home .next-tours a { padding: 0; overflow: hidden; align-content: start; gap: 0; }
+  .home .next-tours img {
+    display: block; inline-size: 100%; aspect-ratio: 16 / 8.5; object-fit: cover; object-position: top left;
+    border-block-end: 1px solid var(--line); background: var(--card);
+  }
+  .home .next-tours .text { display: grid; gap: 0.25rem; padding: 0.9rem 1rem 1rem; }
+  .home .next-tours .n { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  @media (prefers-reduced-motion: no-preference) {
+    .home .next-tours a { transition: translate 200ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 200ms cubic-bezier(0.23, 1, 0.32, 1); }
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .home .next-tours a:hover { translate: 0 -3px; box-shadow: 0 16px 36px -22px oklch(0% 0 0 / 0.55); }
+  }
+  .home footer { color: var(--muted); font-size: 0.9rem; text-align: center; }
+</style>
+</head>
+<body>
+<main class="tour home">
+  <div class="top">
+    <a class="brand" href="./"><i></i>Fling tours</a>
+    <span class="title">Five walkthroughs</span>
+    <span class="spacer"></span>
+    <button class="icon-btn" id="theme" aria-label="Switch light or dark">◐</button>
+  </div>
+
+  <section class="card-slot">
+    <div class="card-inner">
+      <span class="eyebrow">Fling walkthroughs</span>
+      <h1>Ask Claude. <span class="rainbow-text">Get a link.</span></h1>
+      <p class="lead">Five short walkthroughs of Fling with Claude, in Claude Code and in Claude’s app: what you ask, what Claude does, and what everyone else sees. Each one plays on its own and has its own link.</p>
+      <div class="chips"><span class="chip">Claude Code</span><span class="chip">Claude Desktop</span><span class="chip">Access</span><span class="chip">Review</span><span class="chip">Paths</span><span class="chip">Forms</span><span class="chip">Site servers</span></div>
+      <a class="btn" href="get-started/">▶&nbsp; Start with the first</a>
+      <span class="eyebrow">The walkthroughs</span>
+      <nav class="next-tours" aria-label="Walkthroughs">
+        <a href="get-started/">
+          <img src="get-started/shots/review-pin.png" alt="" loading="lazy">
+          <span class="text"><span class="n">1 · Get started</span><b>Your first fling</b><span>Set up, publish a page, choose who sees it, get it reviewed.</span></span>
+        </a>
+        <a href="team-site/">
+          <img src="team-site/shots/home.png" alt="" loading="lazy">
+          <span class="text"><span class="n">2 · Teams</span><b>A team site, a Path per ticket</b><span>One address for the team, a page per ticket, reviewed one by one.</span></span>
+        </a>
+        <a href="eval-labelling/">
+          <img src="eval-labelling/shots/label-fail.png" alt="" loading="lazy">
+          <span class="text"><span class="n">3 · Evals</span><b>Label an eval set</b><span>A page per sample, a blind form, and the labels back as data.</span></span>
+        </a>
+        <a href="site-server/">
+          <img src="site-server/shots/live-result.png" alt="" loading="lazy">
+          <span class="text"><span class="n">4 · Site servers</span><b>A site that does real work</b><span>A small server beside the page: an API key, Claude, logs.</span></span>
+        </a>
+        <a href="claude-app/">
+          <img src="claude-app/shots/review-comment.png" alt="" loading="lazy">
+          <span class="text"><span class="n">5 · No terminal</span><b>Just ask Claude</b><span>In Claude Desktop, on the web or your phone, with no terminal.</span></span>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <footer>Recorded on a real Fling. The two people shown are real accounts under made-up names.</footer>
+</main>
+<script>
+  document.getElementById('theme').onclick = () => {
+    const root = document.documentElement
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches
+    root.dataset.theme = dark ? 'light' : 'dark'
+  }
+</script>
+</body>
+</html>

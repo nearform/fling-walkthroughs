@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q3 support report</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ink: #1b1d29; --muted: #5c6070; --line: #e4e5ec; --bg: #fbfaf7; --card: #fff;
+    --a: #3f6df2; --b: #9a5cf0; --c: #19a974; --d: #f2994a;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.5; }
+  main { max-width: 1040px; margin: 0 auto; padding: 48px 32px 80px; display: grid; gap: 28px; }
+  .eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+  h1 { font-size: 44px; line-height: 1.05; letter-spacing: -.03em; margin: 6px 0 10px; }
+  .lead { font-size: 18px; color: var(--muted); max-width: 62ch; margin: 0; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .kpi { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .kpi b { display: block; font-size: 30px; letter-spacing: -.02em; }
+  .kpi span { color: var(--muted); font-size: 14px; }
+  .kpi .up { color: var(--c); font-weight: 700; font-size: 13px; }
+  .kpi .down { color: #d64545; font-weight: 700; font-size: 13px; }
+  .grid { display: grid; grid-template-columns: 3fr 2fr; gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
+  h2 { font-size: 18px; margin: 0 0 12px; letter-spacing: -.01em; }
+  svg text { font: 12px ui-sans-serif, system-ui, sans-serif; fill: var(--muted); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  td, th { text-align: left; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+  td.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .bar { height: 8px; border-radius: 4px; background: var(--a); }
+  ul { margin: 0; padding-left: 18px; }
+  li { margin: 6px 0; }
+  footer { color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Customer support · Q3 2026</div>
+    <h1>Q3 support report</h1>
+    <p class="lead">Tickets grew 18% on Q2 as the new billing plans launched, but first replies got faster and
+      satisfaction held. Billing was the biggest topic: 4,610 of 12,480 tickets (37%), most of them in July.</p>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi"><b>12,480</b><span>tickets</span> <span class="up">▲ 18%</span></div>
+    <div class="kpi"><b>2h 05m</b><span>median first reply</span> <span class="up">▼ 41m</span></div>
+    <div class="kpi"><b>91%</b><span>satisfaction</span> <span class="up">▲ 1 pt</span></div>
+    <div class="kpi"><b>6.2%</b><span>reopened</span> <span class="down">▲ 0.8 pt</span></div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Tickets per week</h2>
+      <svg viewBox="0 0 560 220" width="100%" role="img" aria-label="Tickets per week, July to September">
+        <g stroke="#eceef3">
+          <line x1="40" y1="20" x2="550" y2="20"/><line x1="40" y1="70" x2="550" y2="70"/>
+          <line x1="40" y1="120" x2="550" y2="120"/><line x1="40" y1="170" x2="550" y2="170"/>
+        </g>
+        <text x="8" y="24">1.4k</text><text x="8" y="74">1.1k</text><text x="8" y="124">800</text><text x="8" y="174">500</text>
+        <polyline fill="none" stroke="#3f6df2" stroke-width="3" stroke-linejoin="round"
+          points="40,150 80,110 120,62 160,40 200,58 240,88 280,96 320,104 360,100 400,112 440,118 480,116 520,122 550,126"/>
+        <polygon fill="#3f6df2" opacity=".08"
+          points="40,150 80,110 120,62 160,40 200,58 240,88 280,96 320,104 360,100 400,112 440,118 480,116 520,122 550,126 550,200 40,200"/>
+        <text x="40" y="214">Jul</text><text x="210" y="214">Aug</text><text x="380" y="214">Sep</text>
+      </svg>
+    </div>
+    <div class="card">
+      <h2>What people asked about</h2>
+      <table>
+        <tr><th>Topic</th><th></th><th class="n">Tickets</th></tr>
+        <tr><td>Billing</td><td><div class="bar" style="width:92%"></div></td><td class="n">4,610</td></tr>
+        <tr><td>Sign-in</td><td><div class="bar" style="width:48%;background:var(--b)"></div></td><td class="n">2,390</td></tr>
+        <tr><td>Exports</td><td><div class="bar" style="width:36%;background:var(--c)"></div></td><td class="n">1,780</td></tr>
+        <tr><td>Integrations</td><td><div class="bar" style="width:30%;background:var(--d)"></div></td><td class="n">1,470</td></tr>
+        <tr><td>Other</td><td><div class="bar" style="width:44%;background:#b8bccb"></div></td><td class="n">2,230</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>What we'll do in Q4</h2>
+    <ul>
+      <li>Put the billing FAQ inside the plan picker, where most of July's questions started.</li>
+      <li>Route sign-in tickets straight to the identity team, skipping the first tier.</li>
+      <li>Find out why reopened tickets rose: sample 200 and tag the cause.</li>
+    </ul>
+  </section>
+
+  <footer>Figures are from the help desk, 1 July to 30 September 2026.</footer>
+</main>
+</body>
+</html>

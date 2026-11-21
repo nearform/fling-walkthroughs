@@ -1,0 +1,130 @@
+{
+  "title": "Labels",
+  "forms": [
+    {
+      "id": "label",
+      "title": "Label this reply",
+      "kind": "page",
+      "visibility": "own",
+      "schema": {
+        "type": "object",
+        "required": [
+          "verdict"
+        ],
+        "properties": {
+          "verdict": {
+            "title": "Verdict",
+            "type": "string",
+            "oneOf": [
+              {
+                "const": "pass",
+                "title": "Pass: right and follows the policy"
+              },
+              {
+                "const": "partial",
+                "title": "Partial: right, but misses something"
+              },
+              {
+                "const": "fail",
+                "title": "Fail: wrong, made up or harmful"
+              }
+            ]
+          },
+          "problem": {
+            "title": "What went wrong?",
+            "type": "string",
+            "oneOf": [
+              {
+                "const": "made_up",
+                "title": "Made something up"
+              },
+              {
+                "const": "wrong_policy",
+                "title": "Contradicts the policy"
+              },
+              {
+                "const": "missed",
+                "title": "Didn't answer the question"
+              },
+              {
+                "const": "tone",
+                "title": "Wrong tone"
+              },
+              {
+                "const": "none",
+                "title": "Nothing"
+              }
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes",
+            "maxLength": 2000
+          }
+        }
+      },
+      "uiSchema": {
+        "verdict": {
+          "ui:widget": "radio"
+        },
+        "problem": {
+          "ui:widget": "radio"
+        },
+        "notes": {
+          "ui:widget": "textarea"
+        }
+      },
+      "paths": [
+        "s/*/"
+      ]
+    },
+    {
+      "id": "flag",
+      "title": "Flag a passage",
+      "kind": "comment",
+      "paths": [
+        "s/*/"
+      ],
+      "visibility": "everyone",
+      "schema": {
+        "type": "object",
+        "required": [
+          "severity"
+        ],
+        "properties": {
+          "severity": {
+            "title": "Severity",
+            "type": "string",
+            "oneOf": [
+              {
+                "const": "blocker",
+                "title": "Blocker: must fix before release"
+              },
+              {
+                "const": "major",
+                "title": "Major: should fix"
+              },
+              {
+                "const": "minor",
+                "title": "Minor"
+              }
+            ]
+          },
+          "details": {
+            "type": "string",
+            "title": "Details",
+            "maxLength": 2000
+          }
+        }
+      },
+      "uiSchema": {
+        "severity": {
+          "ui:widget": "radio"
+        },
+        "details": {
+          "ui:widget": "textarea"
+        }
+      }
+    }
+  ]
+}

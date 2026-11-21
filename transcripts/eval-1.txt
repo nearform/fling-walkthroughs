@@ -1,0 +1,16 @@
+$ fling forms init site --template labels --title Labels
+✔ Wrote site/fling.forms.json (labels: a verdict per page plus notes; each reviewer sees only their own (blind labelling))
+Change its options, wording and paths to fit, check it with `fling forms check site`, then deploy the folder.
+$ fling forms check site
+✔ site/fling.forms.json is valid
+Labels · Label this reply (label): one per reviewer per page, 12 pages, each reviewer sees only their own
+Labels · Flag a passage (flag): a comment type, 12 pages
+$ fling deploy site --name support-evals --access people --add ana@example.com
+✔ Deployed support-evals (13 files, 25 KB; uploaded 13, version cf50a373814c3952)
+◆ Labels · Label this reply (label): one per reviewer per page, 12 pages, each reviewer sees only their own
+◆ Labels · Flag a passage (flag): a comment type, 12 pages
+  Responses and progress: https://infinitesoftwarefactory.com/sites/support-evals/responses
+https://support-evals.infinitesoftwarefactory.com/
+Share for feedback (reviewers sign in to Fling): https://infinitesoftwarefactory.com/review/support-evals
+Who can open it: Only you and 1 person can open it.
+Change who can open it with `fling access support-evals --only-me | --members | --add <email> | --group <slug> | --public`. An address from outside is invited as a reviewer, who sees only what is shared with them.

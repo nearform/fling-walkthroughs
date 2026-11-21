@@ -1,0 +1,36 @@
+
+      ███████╗██╗     ██╗███╗   ██╗ ██████╗
+  ━━━ ██╔════╝██║     ██║████╗  ██║██╔════╝
+ ━━━━ █████╗  ██║     ██║██╔██╗ ██║██║  ███╗
+   ━━ ██╔══╝  ██║     ██║██║╚██╗██║██║   ██║
+      ██║     ███████╗██║██║ ╚████║╚██████╔╝
+      ╚═╝     ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝
+      throw static files at the web, get a link back
+
+┌   fling setup
+│  ◆ Opening your browser to sign in to Fling at https://infinitesoftwarefactory.com
+│    If it does not open, visit: https://infinitesoftwarefactory.com/auth/cli?redirec
+t_uri=http%3A%2F%2F127.0.0.1%3A8765%2Fcallback&hostname=sams-mac&state=e9e
+2955f58fb59143c9d9e7bc04e19c5
+│  ◆ Waiting for the browser to complete sign-in (5-minute timeout)…
+│  ✔ Signed in as sam@example.com
+│    Server: https://infinitesoftwarefactory.com
+│    API key: fling_••••… (stored in ~/work/fling-walkthroughs/tmp/fresh
+-home/.fling/config.json)
+│
+◇  Install the Fling plugin (skill + MCP server) into Claude Code?
+│  Yes
+│
+◇  Claude Code plugin fling installed (user scope)
+│    Restart Claude Code (or run /reload-plugins) to pick it up.
+│
+◇  Add the Fling extension to Claude Desktop too?
+│  No
+│  ◆ Claude Desktop extension: skipped
+│
+└  You're set. Try fling deploy ./dist, or ask Claude to “fling this”.
+How everything works: https://infinitesoftwarefactory.com/guide
+
+
+$
+$

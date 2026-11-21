@@ -1,0 +1,7 @@
+$ fling responses support-evals
+Label this reply (label): 12 / 12 pages answered, 2 reviewers
+Flag a passage (flag): 1 response on 1 of 12 pages, 1 reviewer
+Progress and downloads: https://infinitesoftwarefactory.com/sites/support-evals/responses
+Export: `fling responses support-evals --format csv -o responses.csv`
+$ fling responses support-evals --format csv -o labels.csv
+✔ Wrote 21 responses to labels.csv

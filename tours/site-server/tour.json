@@ -1,0 +1,3 @@
+{ "title": "A site that does real work · a Fling walkthrough",
+  "description": "Claude builds a support triage desk: a page and a small server that keeps an API key, asks Claude to triage a ticket and knows who is calling. Then fling dev, a deploy that waits for its secret, and the logs.",
+  "poster": "shots/live-result.png" }

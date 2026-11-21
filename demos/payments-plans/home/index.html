@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Payments plans</title>
+<style>
+:root{color-scheme:light dark;--bg:#f7f7f8;--fg:#1c1c21;--muted:#5d5d68;--card:#fff;--line:#e2e2e7;--fling-paths-accent:#2f5fc4}
+@media (prefers-color-scheme:dark){:root{--bg:#141417;--fg:#ececf0;--muted:#a0a0ab;--card:#1d1d22;--line:#2e2e35;--fling-paths-accent:#8ab0ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:var(--width,56rem);margin:0 auto;padding:clamp(1.5rem,5vw,3.5rem) 1.25rem}
+header{margin-bottom:1.75rem}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);letter-spacing:-.015em;margin:0 0 .35rem}
+header p{margin:0;color:var(--muted)}
+a{color:var(--fling-paths-accent)}
+.empty{color:var(--muted);padding:2rem;text-align:center;border:1px dashed var(--line);border-radius:.75rem}
+.board{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,16rem),1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:.75rem;transition:border-color .15s}
+.card:hover{border-color:var(--fling-paths-accent)}
+.card a{display:flex;flex-direction:column;gap:.4rem;height:100%;padding:1rem 1.1rem;color:inherit;text-decoration:none}
+.ticket{align-self:start;font:600 .8rem/1 ui-monospace,monospace;color:var(--fling-paths-accent);background:color-mix(in srgb,var(--fling-paths-accent) 12%,transparent);padding:.3rem .5rem;border-radius:.4rem}
+.card h2{font-size:1.05rem;line-height:1.35;margin:0}
+.card time{margin-top:auto;font-size:.85rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>Payments plans</h1>
+<p>One plan per ticket, newest first. Publish yours with <code>fling deploy ./plan --name payments-plans --path PAY-123</code>, or ask Claude.</p>
+</header>
+<!-- fling:paths-controls -->
+<div class="board">
+<!-- fling:paths sort=updated -->
+<article class="card"><a href="{{href}}"><span class="ticket">{{folder}}</span><h2>{{title}}</h2><time datetime="{{updated}}">{{date}}</time></a></article>
+<!-- fling:empty -->
+<p class="empty">No plans yet. Publish each plan to a folder named after its ticket, such as PAY-412.</p>
+<!-- /fling:paths -->
+</div>
+</main>
+</body>
+</html>

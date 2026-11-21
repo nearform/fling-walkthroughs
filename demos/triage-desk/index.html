@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Triage desk</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ink: #1b1d29; --muted: #5c6070; --line: #e4e5ec; --bg: #fbfaf7; --card: #fff; --a: #3f6df2;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.5; }
+  main { max-width: 1120px; margin: 0 auto; padding: 36px 28px 64px; display: grid; gap: 22px; }
+  header { display: flex; align-items: end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+  h1 { font-size: 34px; letter-spacing: -.025em; margin: 4px 0 0; }
+  .who { font-size: 14px; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 12px; }
+  h2 { font-size: 16px; margin: 0; }
+  textarea { width: 100%; min-height: 260px; resize: vertical; font: 15px/1.5 ui-sans-serif, system-ui, sans-serif; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fcfcfd; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  button { font: inherit; font-weight: 700; border-radius: 999px; padding: 9px 18px; cursor: pointer; border: 1px solid var(--line); background: var(--card); }
+  button.primary { background: var(--a); border-color: var(--a); color: white; }
+  button:disabled { opacity: .6; cursor: progress; }
+  .samples button { font-weight: 500; font-size: 13px; padding: 5px 12px; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { font-size: 13px; font-weight: 700; border-radius: 999px; padding: 4px 12px; background: #f1f3fb; }
+  .P1 { background: #fde8e8; color: #a32020; } .P2 { background: #fff1de; color: #9a5a00; }
+  .P3 { background: #eef2ff; color: #3346b0; } .P4 { background: #eef7f1; color: #1d7a48; }
+  .label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+  .reply { white-space: pre-wrap; border-left: 3px solid var(--a); padding-left: 12px; }
+  .empty { color: var(--muted); }
+  .err { color: #a32020; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <div class="eyebrow">Support · triage desk</div>
+      <h1>Paste a ticket, get it triaged</h1>
+    </div>
+    <div class="who" id="who"></div>
+  </header>
+  <div class="grid">
+    <section class="card">
+      <h2>The ticket</h2>
+      <textarea id="ticket" placeholder="Paste a customer email or bug report…"></textarea>
+      <div class="row samples">
+        <span class="label">Try</span>
+        <button data-sample="0">Double charge</button>
+        <button data-sample="1">Export bug</button>
+        <button data-sample="2">Feature request</button>
+      </div>
+      <div class="row"><button class="primary" id="go">Triage it</button><span class="who" id="status"></span></div>
+    </section>
+    <section class="card" id="out"><p class="empty">The category, priority, a summary and a draft reply appear here.</p></section>
+  </div>
+</main>
+<script>
+  const samples = [
+    'Subject: Charged twice??\n\nHi, I just looked at my bank statement and you have taken £49 from me twice on 3 November for the same Business plan. I only have one account. I need the second payment back today please, rent is due.\n\nPriya',
+    'Subject: CSV export broken\n\nSince this morning, exporting invoices as CSV gives a file with only the header row. PDF export still works. We have month-end close tomorrow and our accountant needs the CSV. Workspace: northwind-uk.\n\nTom, Northwind',
+    'Subject: Dark mode?\n\nLove the app. Any chance of a dark mode? I use it late at night and it is very bright. Not urgent at all, just a wish!\n\nKen',
+  ]
+  const $ = id => document.getElementById(id)
+  for (const b of document.querySelectorAll('[data-sample]')) b.onclick = () => { $('ticket').value = samples[b.dataset.sample] }
+  fetch('/api/me').then(r => r.json()).then(me => { $('who').textContent = me.email ? `Drafting as ${me.email}` : 'Not signed in' }).catch(() => {})
+  const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c])
+  $('go').onclick = async () => {
+    const ticket = $('ticket').value.trim()
+    if (!ticket) return
+    $('go').disabled = true
+    $('status').textContent = 'Asking Claude…'
+    const started = performance.now()
+    try {
+      const r = await fetch('/api/triage', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ticket }) })
+      const t = await r.json()
+      if (!r.ok) throw new Error(t.error ?? r.statusText)
+      $('out').innerHTML = `
+        <div class="chips"><span class="chip ${esc(t.priority)}">${esc(t.priority)}</span><span class="chip">${esc(t.category)}</span><span class="chip">${esc(t.team)}</span></div>
+        <div><div class="label">Summary</div><p style="margin:4px 0 0">${esc(t.summary)}</p></div>
+        <div><div class="label">Draft reply</div><p class="reply" style="margin:6px 0 0">${esc(t.draftReply)}</p></div>`
+      $('status').textContent = `Done in ${((performance.now() - started) / 1000).toFixed(1)} s`
+    } catch (e) {
+      $('out').innerHTML = `<p class="err">${esc(e.message)}</p>`
+      $('status').textContent = ''
+    } finally {
+      $('go').disabled = false
+    }
+  }
+</script>
+</body>
+</html>

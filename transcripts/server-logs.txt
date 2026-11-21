@@ -1,0 +1,8 @@
+$ fling logs triage-desk --since 15m
+11:01:20  GET /api/me  200  114 ms  v_aefszfnsl6tsi  version 7b2237d9ce832fcf
+11:01:24  triaged for v_aefszfnsl6tsi: P1 Billing in 1815 ms
+11:01:24  POST /api/triage  200  1825 ms  v_aefszfnsl6tsi  version 7b2237d9ce832fcf
+11:01:26  GET /api/me  200  4 ms  v_aefszfnsl6tsi  version 7b2237d9ce832fcf
+11:01:50  GET /api/me  200  103 ms  v_aefszfnsl6tsi  version 7b2237d9ce832fcf
+11:01:54  POST /api/triage  200  1613 ms  v_aefszfnsl6tsi  version 7b2237d9ce832fcf
+11:01:54  triaged for v_aefszfnsl6tsi: P1 Billing in 1560 ms

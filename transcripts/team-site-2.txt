@@ -1,0 +1,10 @@
+$ fling deploy home --name payments-plans --access groups --group payments
+✔ Deployed payments-plans (1 files, 2.3 KB; uploaded 1, version 49deef6efcf6e64a)
+◆ Sign-off · Sign-off (signoff): one per reviewer per page, 0 pages
+◆ warning: signoff: "PAY-*/" matches no page
+◆ warning: signoff: applies to no page
+  Responses and progress: https://infinitesoftwarefactory.com/sites/payments-plans/responses
+https://payments-plans.infinitesoftwarefactory.com/
+Share for feedback (reviewers sign in to Fling): https://infinitesoftwarefactory.com/review/payments-plans
+Who can open it: Only you and 1 group can open it.
+Change who can open it with `fling access payments-plans --only-me | --members | --add <email> | --group <slug> | --public`. An address from outside is invited as a reviewer, who sees only what is shared with them.

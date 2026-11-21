@@ -1,0 +1,9 @@
+◆ serving triage-desk/ at http://localhost:47180  (server: server.ts, rebuilt on save)
+  viewer: sam@example.com (v_sxrjqfrbfo4e4) · secrets: ANTHROPIC_API_KEY (from .env)
+  Try it with the page or curl, then `fling deploy`. Ctrl-C stops it.
+11:00:21  GET /api/health  200  3 ms  v_sxrjqfrbfo4e4  version dev-1
+11:00:24  triaged for v_sxrjqfrbfo4e4: P1 Bug in 2094 ms
+11:00:24  POST /api/triage  200  2097 ms  v_sxrjqfrbfo4e4  version dev-1
+11:00:33  GET /api/me  200  4 ms  v_sxrjqfrbfo4e4  version dev-1
+11:00:37  triaged for v_sxrjqfrbfo4e4: P1 Bug in 1637 ms
+11:00:37  POST /api/triage  200  1639 ms  v_sxrjqfrbfo4e4  version dev-1

@@ -1,0 +1,5 @@
+$ fling deploy . --name triage-desk --access members
+◆ bundling server.ts → _fling/server.mjs (2.1 KB, 1.2 KB gzipped)
+◆ Skipped 2 dotfiles (.env, .gitignore) — dotfiles are never flung
+✖ Version 7b2237d9ce832fcf of "triage-desk" needs the site secrets ANTHROPIC_API_KEY, which aren't set. It goes live as soon as they are: set it (fling secrets set triage-desk NAME); nothing needs publishing again
+  Set it: `fling secrets set triage-desk ANTHROPIC_API_KEY < file`, or `fling secrets set triage-desk --from .env ANTHROPIC_API_KEY`. The version goes live as soon as the last is set; there is nothing to deploy again.

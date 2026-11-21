@@ -1,0 +1,3 @@
+{ "title": "Label an eval set · a Fling walkthrough",
+  "description": "A page per sample, a blind labelling form beside it, two people labelling, and every label back as CSV to merge into the dataset.",
+  "poster": "shots/label-fail.png" }

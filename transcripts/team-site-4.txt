@@ -1,0 +1,23 @@
+$ fling responses payments-plans
+Sign-off on payments-plans
+
+PAGE       FORM     REVIEWER                  UPDATED           ANSWERS
+/PAY-412/  signoff  ana@example.com  2026-11-16 10:43  Is this plan ready to build?: Needs changes · Anything to add?: Good plan. Just…
+/PAY-431/  signoff  ana@example.com  2026-11-16 10:44  Is this plan ready to build?: Approve
+
+Sign-off (signoff): 0 / 0 pages answered, 1 reviewer
+Progress and downloads: https://infinitesoftwarefactory.com/sites/payments-plans/responses
+Export: `fling responses payments-plans --format csv -o responses.csv`
+$ fling responses payments-plans --format csv
+id,path,formId,author,createdAt,updatedAt,versionId,verdict,note
+R101fdc06cce9d23a27b73afd,/PAY-412/,signoff,ana@example.com,2026-11-16T10:43:53.524Z,2026-11-16T10:43:53.524Z,49deef6efcf6e64a,changes,Good plan. Just say what we do if Week 3 misses the 25% bar.
+R661b14c2b210050aaf583168,/PAY-431/,signoff,ana@example.com,2026-11-16T10:44:00.406Z,2026-11-16T10:44:00.406Z,49deef6efcf6e64a,approve,
+$ fling paths payments-plans
+  A site's home page (its root index.html) can list its Paths:
+    default  no index.html of its own: Fling serves a listing of the live Paths (a site whose first publish is a Path gets one). Nothing to do.
+    custom   your own index.html with a Paths block, filled with the live Paths: `fling paths init` writes a starter (plans, docs, reports, minimal); adapt it, keeping the block, `fling paths check` it, then deploy it as the site root (without --path).
+    none     an index.html without a Paths block lists no Paths; a deploy then says so.
+PATH       TITLE                                   VERSION           STATE  PUBLISH  UPDATED
+/PAY-412/  Retry failed card payments              c3cdb4159c9f023b  live   yes      2026-11-16 10:43
+/PAY-418/  Show VAT on invoices for EU customers   bb7e7b3ab0f9ec4b  live   yes      2026-11-16 10:42
+/PAY-431/  Refunds to the original payment method  71bd8ece1138ffab  live   yes      2026-11-16 10:42

@@ -1,0 +1,15 @@
+$ fling groups create payments --name "Payments team"
+✔ Group payments created
+payments (Payments team, 0 people), owned by you (you can change it).
+No members yet.
+$ fling groups add payments ana@example.com
+payments (Payments team, 1 person), owned by you (you can change it).
+Members: ana@example.com.
+$ fling paths check home
+✔ home/index.html has a template Paths block (sort=updated)
+Deploy it as the site root (without --path): the listing fills in with the live Paths.
+$ fling forms check home
+✔ home/fling.forms.json is valid
+Sign-off · Sign-off (signoff): one per reviewer per page, 0 pages
+warning: signoff: "PAY-*/" matches no page
+warning: signoff: applies to no page

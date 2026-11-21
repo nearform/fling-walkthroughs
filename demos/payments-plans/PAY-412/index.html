@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retry failed card payments</title><style>
+:root{color-scheme:light;--ink:#1b1d29;--muted:#5c6070;--line:#e4e5ec;--bg:#fbfaf7;--card:#fff;--a:#3f6df2;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Inter,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);line-height:1.55}
+main{max-width:860px;margin:0 auto;padding:44px 28px 80px;display:grid;gap:22px}
+.top{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ticket{font:700 13px ui-monospace,Menlo,monospace;background:#eef2ff;color:#3346b0;border-radius:6px;padding:3px 8px}
+.state{font-size:13px;font-weight:700;border-radius:999px;padding:3px 10px;border:1px solid var(--line)}
+.state.Approved{background:#e8f8ef;color:#167a4a;border-color:#bfe8d1}.state.Draft{background:#f4f4f6;color:#5c6070}.state.In{background:#fff6e5;color:#9a6200;border-color:#f3dcae}
+.owner{color:var(--muted);font-size:14px}
+h1{font-size:38px;line-height:1.08;letter-spacing:-.03em;margin:4px 0 0}
+h2{font-size:17px;margin:0 0 8px;letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px}
+.lead{font-size:18px;color:var(--muted);margin:0}
+ol,ul{margin:0;padding-left:20px}li{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:15px}td{padding:8px 0;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{width:110px;color:var(--muted);font-weight:600}
+a.back{color:var(--a);font-size:14px;text-decoration:none}
+</style></head>
+<body><main>
+<a class="back" href="../">← Payments plans</a>
+<header><div class="top"><span class="ticket">PAY-412</span><span class="state In">In review</span><span class="owner">Plan by Ana Lopez</span></div>
+<h1>Retry failed card payments</h1></header>
+<p class="lead">About 3.1% of renewals fail on the first charge, most with soft declines (insufficient funds, issuer unavailable). Today we give up at once and email the customer, and 41% of them churn.</p>
+<section class="card"><h2>What we'll build</h2><ol><li>Retry soft declines on a schedule: after 1 day, 3 days and 7 days, at the hour the card last succeeded.</li><li>Never retry hard declines (stolen card, closed account); email the customer straight away as now.</li><li>Keep the subscription active through the retry window, with a banner asking to update the card.</li></ol></section>
+<section class="card"><h2>Rollout</h2><table><tr><td>Week 1</td><td>Retry worker behind a flag, 5% of renewals</td></tr><tr><td>Week 2</td><td>50%, compare recovery against the control group</td></tr><tr><td>Week 3</td><td>Everyone, if recovery is above 25%</td></tr></table></section>
+<section class="card"><h2>Risks</h2><ul><li>Retrying too often can get us flagged by the card networks: cap at 4 attempts in 30 days.</li><li>Customers charged on day 7 may not expect it: say the date in the first email.</li></ul></section>
+</main></body></html>

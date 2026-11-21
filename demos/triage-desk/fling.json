@@ -1,0 +1,4 @@
+{
+  "secrets": ["ANTHROPIC_API_KEY"],
+  "health": "/api/health"
+}

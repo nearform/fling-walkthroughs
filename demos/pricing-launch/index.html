@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New pricing: launch checklist</title>
+<style>
+  :root { color-scheme: light; --ink: #1d1b26; --muted: #615d70; --line: #e6e3ec; --bg: #fbf9f6; --card: #fff; --a: #5b4bd6; --ok: #1f7a4d; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 48px 28px 72px; display: grid; gap: 26px; }
+  .eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+  h1 { font-size: 38px; letter-spacing: -.025em; line-height: 1.1; margin: 6px 0 8px; }
+  .lead { color: var(--muted); font-size: 18px; margin: 0; }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .fact { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .fact b { display: block; font-size: 22px; letter-spacing: -.01em; }
+  .fact span { color: var(--muted); font-size: 14px; }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; }
+  h2 { font-size: 17px; margin: 0 0 10px; display: flex; gap: 10px; align-items: baseline; }
+  h2 small { font-weight: 600; color: var(--a); font-size: 13px; }
+  ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  li { display: grid; grid-template-columns: 22px 1fr auto; gap: 8px; align-items: start; }
+  li::before { content: ""; inline-size: 16px; block-size: 16px; margin-top: 3px; border: 2px solid #c9c4d6; border-radius: 4px; }
+  li .who { font-size: 13px; color: var(--muted); white-space: nowrap; }
+  footer { color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Pricing · launch checklist</div>
+    <h1>Moving customers to the new plans on 1 February</h1>
+    <p class="lead">Starter goes from £9 to £12 a month; Business and Enterprise keep their prices and gain usage-based add-ons. Everything that has to happen, in order, and who owns it.</p>
+  </header>
+
+  <div class="facts">
+    <div class="fact"><b>1 Feb</b><span>new prices apply on the next renewal</span></div>
+    <div class="fact"><b>4,180</b><span>Starter customers affected</span></div>
+    <div class="fact"><b>£0</b><span>change for Business and Enterprise</span></div>
+  </div>
+
+  <section>
+    <h2>Before launch <small>by 15 January</small></h2>
+    <ul>
+      <li><span>New prices and add-ons in the billing system, behind a flag</span><span class="who">Payments</span></li>
+      <li><span>Pricing page, plan comparison and FAQ updated and reviewed by Legal</span><span class="who">Marketing</span></li>
+      <li><span>Support macros for “why did my bill go up?” and “how do I change plan?”</span><span class="who">Support</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tell customers <small>from 2 January: 30 days’ notice</small></h2>
+    <ul>
+      <li id="notice"><span>Email every Starter customer 30 days before their next renewal (our terms, section 4.2), with the new price and how to switch to annual</span><span class="who">Lifecycle</span></li>
+      <li><span>In-app banner for Starter admins from the day the email goes</span><span class="who">Product</span></li>
+      <li><span>Account managers call the 40 largest Business customers about the add-ons</span><span class="who">Sales</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Launch day <small>1 February</small></h2>
+    <ul>
+      <li><span>Turn the flag on at 09:00 UK; watch failed renewals and refunds for 48 hours</span><span class="who">Payments</span></li>
+      <li><span>Support rota doubled for the first week</span><span class="who">Support</span></li>
+      <li><span>Daily note to the leadership channel: renewals, downgrades, tickets</span><span class="who">Pricing lead</span></li>
+    </ul>
+  </section>
+
+  <footer>Questions or changes: comment on this page.</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,10 @@
+$ fling deploy PAY-431 --name payments-plans --path PAY-431
+✔ Deployed payments-plans to /PAY-431/ (1 files, 2.8 KB; uploaded 1, version 71bd8ece1138ffab)
+https://payments-plans.infinitesoftwarefactory.com/PAY-431/
+Share for feedback (reviewers sign in to Fling): https://infinitesoftwarefactory.com/review/payments-plans
+Only you and 1 group can open it. Share it with a link: `fling share payments-plans`.
+$ fling deploy PAY-418 --name payments-plans --path PAY-418
+✔ Deployed payments-plans to /PAY-418/ (1 files, 2.8 KB; uploaded 1, version bb7e7b3ab0f9ec4b)
+https://payments-plans.infinitesoftwarefactory.com/PAY-418/
+Share for feedback (reviewers sign in to Fling): https://infinitesoftwarefactory.com/review/payments-plans
+Only you and 1 group can open it. Share it with a link: `fling share payments-plans`.

@@ -1,0 +1,28 @@
+{
+  "title": "Sign-off",
+  "forms": [
+    {
+      "id": "signoff",
+      "title": "Sign-off",
+      "kind": "page",
+      "paths": ["PAY-*/"],
+      "visibility": "everyone",
+      "schema": {
+        "type": "object",
+        "required": ["verdict"],
+        "properties": {
+          "verdict": {
+            "title": "Is this plan ready to build?",
+            "type": "string",
+            "oneOf": [
+              { "const": "approve", "title": "Approve" },
+              { "const": "changes", "title": "Needs changes" }
+            ]
+          },
+          "note": { "type": "string", "title": "Anything to add?", "maxLength": 2000 }
+        }
+      },
+      "uiSchema": { "verdict": { "ui:widget": "radio" }, "note": { "ui:widget": "textarea" } }
+    }
+  ]
+}
