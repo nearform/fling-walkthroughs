@@ -3,7 +3,7 @@
 //   node build.mjs [tour…]
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 
-const SITE_URL = 'https://fling-tour.infinitesoftwarefactory.com'
+const SITE_URL = 'https://fling-tour.fling.labs.nearform.com'
 const all = readdirSync('tours').filter(t => existsSync(`tours/${t}/scenes.js`))
 const tours = process.argv.length > 2 ? process.argv.slice(2) : all
 const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])

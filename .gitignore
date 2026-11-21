@@ -4,3 +4,4 @@ capture/profiles/
 .env.*
 dist/
 tmp/
+dist-home/

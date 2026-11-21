@@ -1,6 +1,6 @@
 # Fling walkthroughs
 
-Self-playing walkthroughs of Fling with Claude, published at https://fling-tour.infinitesoftwarefactory.com (a Fling site named `fling-tour` on infinitesoftwarefactory.com). README.md has the layout and commands. This file covers how to change things.
+Self-playing walkthroughs of Fling with Claude, published at https://fling-tour.fling.labs.nearform.com (the site `fling-tour` on the fling.labs.nearform.com Fling). The tours were recorded on infinitesoftwarefactory.com, which is still where `capture/` points. README.md has the layout and commands. This file covers how to change things.
 
 ## The rules
 
@@ -14,12 +14,14 @@ Self-playing walkthroughs of Fling with Claude, published at https://fling-tour.
 
 ## Publishing the site
 
-The site is the `fling-tour` Fling on infinitesoftwarefactory.com. When asked to publish (or "fling it"):
+The site is `fling-tour` on the fling.labs.nearform.com Fling (public). The home page is the root of the site, and each tour is its own Path (`/<id>/`), so tours can be republished one at a time. When asked to publish (or "fling it"):
 
-1. `rm -rf dist && node build.mjs` builds every tour into `dist/<id>/`. `node build.mjs <id>` builds one, but publish a full build.
-2. Add the home page by hand: copy `home/index.html` to `dist/index.html` and `player/player.css` to `dist/player.css`. `build.mjs` doesn't do this.
-3. `node scan.mjs`. Stop if it reports anything.
-4. Fling `dist/` with the Fling tools (`fling_deploy`, server `infinitesoftwarefactory.com`, name `fling-tour`). It is an existing site, so leave access alone. The CLI equivalent is `fling deploy ./dist --name fling-tour`.
+1. `rm -rf dist && node build.mjs` builds every tour into `dist/<id>/`. `node build.mjs <id>` builds one.
+2. For the home page, copy `home/index.html` and `player/player.css` into a folder of their own (e.g. `dist-home/`, kept outside `dist/`). `build.mjs` doesn't do this.
+3. `node scan.mjs` (and `node scan.mjs dist-home`). Stop if either reports anything.
+4. Fling with the Fling tools on server `fling.labs.nearform.com`, site `fling-tour`. It is an existing site, so leave access alone.
+   - Each changed tour: `fling_deploy` with path `dist/<id>` and `sitePath: "<id>"`. CLI: `fling deploy ./dist/<id> --name fling-tour --path <id>`.
+   - The home page, if it changed: `fling_deploy` with path `dist-home`. This replaces the root files and leaves the tour Paths alone.
 5. Give the user the review link and the site URL that come back.
 
 ## How a tour works

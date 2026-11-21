@@ -10,7 +10,7 @@ Five short, self-playing walkthroughs of [Fling](https://infinitesoftwarefactory
 | `site-server` | A small server beside the page: an API key, Claude, logs |
 | `claude-app` | Claude Desktop, web or phone, with no terminal |
 
-Live at https://fling-tour.infinitesoftwarefactory.com.
+Live at https://fling-tour.fling.labs.nearform.com.
 
 Nothing in a tour is mocked. The screenshots come from a real Fling and the terminal lines are the real output of running the commands (`transcripts/`). The two accounts used appear as the personas Sam Rivera and Ana Lopez. Redaction swaps the names when each shot is taken, and the build is scanned before it is published.
 
