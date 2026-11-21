@@ -63,6 +63,7 @@ The site is `fling-tour` on the fling.labs.nearform.com Fling (public). The home
 
 ## Style
 
+- The tours show Claude, but don’t imply Fling is Claude-only. It works with any agent that supports MCP, or that can run the `fling` CLI and use skills. The home page and tour 1’s ending say so.
 - Captions are short and plain. Notes explain why in a sentence or two. Write UK/US-neutral prose and use curly quotes and apostrophes (’ “ ”), as the existing tours do.
 - No framework or bundler. Plain ES modules and vanilla JS. Keep it that way.
 - Node 22+, `"type": "module"`.

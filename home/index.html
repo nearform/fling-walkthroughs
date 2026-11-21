@@ -16,7 +16,13 @@
   /* The home page is the tours' end card on its own: the same frame, one card filling the page. */
   .home { block-size: auto; min-block-size: 100svh; grid-template-rows: auto minmax(0, 1fr) auto; }
   .home .card-slot { place-items: center; padding-block: clamp(1.25rem, 0.5rem + 3vh, 2.75rem); }
-  .home .card-inner { inline-size: min(72rem, 100%); gap: 1.1rem; }
+  .home .agents { color: var(--muted); max-inline-size: 60ch; margin-block-start: -0.4rem; }
+  .home .card-inner { inline-size: min(80rem, 100%); gap: 1.1rem; }
+  /* the hero: text and a real screenshot side by side when there is room, stacked when not */
+  .home .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(26rem, 100%), 1fr)); gap: clamp(1.5rem, 1rem + 2vw, 3rem); align-items: center; }
+  .home .hero-text { display: grid; gap: 1.1rem; justify-items: start; }
+  .home .hero-shot { display: block; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 24px 48px -28px oklch(0% 0 0 / 0.5); }
+  .home .hero-shot img { display: block; inline-size: 100%; block-size: auto; }
   .home .next-tours { grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr)); gap: 1rem; }
   .home .next-tours a { padding: 0; overflow: hidden; align-content: start; gap: 0; }
   .home .next-tours img {
@@ -45,11 +51,19 @@
 
   <section class="card-slot">
     <div class="card-inner">
-      <span class="eyebrow">Fling walkthroughs</span>
-      <h1>Ask Claude. <span class="rainbow-text">Get a link.</span></h1>
-      <p class="lead">Claude can make a report, a plan, a labelling set or a small app in minutes. Getting it to the right people, and their feedback back to Claude, is the slow part. Each walkthrough starts with one of those problems and shows how Fling, used from Claude, solves it.</p>
-      <div class="chips"><span class="chip">Claude Code</span><span class="chip">Claude Desktop</span><span class="chip">Access</span><span class="chip">Review</span><span class="chip">Paths</span><span class="chip">Forms</span><span class="chip">Site servers</span></div>
-      <a class="btn" href="get-started/">▶&nbsp; Start with the first</a>
+      <div class="hero">
+        <div class="hero-text">
+          <span class="eyebrow">Fling walkthroughs</span>
+          <h1>Ask Claude. <span class="rainbow-text">Get a link.</span></h1>
+          <p class="lead">Claude can make a report, a plan, a labelling set or a small app in minutes. Getting it to the right people, and their feedback back to Claude, is the slow part. Each walkthrough starts with one of those problems and shows how Fling, used from Claude, solves it.</p>
+          <p class="agents">We show Claude here, but Fling works with any agent that supports MCP, or that can run the fling CLI and use skills.</p>
+          <div class="chips"><span class="chip">Claude Code</span><span class="chip">Claude Desktop</span><span class="chip">Access</span><span class="chip">Review</span><span class="chip">Paths</span><span class="chip">Forms</span><span class="chip">Site servers</span></div>
+          <a class="btn" href="get-started/">▶&nbsp; Start with the first</a>
+        </div>
+        <a class="hero-shot" href="get-started/" aria-label="Play the first walkthrough">
+          <img src="get-started/shots/review-comments.png" alt="A published report on its review page, with a colleague’s comments pinned to the words they are about">
+        </a>
+      </div>
       <span class="eyebrow">The walkthroughs</span>
       <nav class="next-tours" aria-label="Walkthroughs">
         <a href="get-started/">

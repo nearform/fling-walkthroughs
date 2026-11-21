@@ -10,6 +10,8 @@ Five short, self-playing walkthroughs of [Fling](https://infinitesoftwarefactory
 | `eval-labelling` | Model outputs need human judges. | A page per sample, a blind form, and the labels back as data |
 | `site-server` | It works on localhost. Now share it. | A small server beside the page: an API key, Claude, logs |
 
+The tours use Claude (Claude Code and Claude’s app), but Fling isn’t tied to it: any agent that supports MCP, or that can run the `fling` CLI and use skills, can do the same.
+
 Live at https://fling-tour.fling.labs.nearform.com.
 
 Nothing in a tour is mocked. The screenshots come from a real Fling and the terminal lines are the real output of running the commands (`transcripts/`). The two accounts used appear as the personas Sam Rivera and Ana Lopez. Redaction swaps the names when each shot is taken, and the build is scanned before it is published.

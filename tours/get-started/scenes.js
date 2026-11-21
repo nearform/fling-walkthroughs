@@ -14,7 +14,7 @@ window.TOUR = {
   problem: 'Claude can turn your data into a polished report in a minute. Sharing it is the slow part: a hosting setup, a public link anyone could open, or screenshots in Slack, with the feedback scattered across threads that never get back to Claude.',
   lead: 'Install the CLI and ask Claude Code to “fling this”. You choose who can open it, a colleague comments on the page itself, and Claude reads the comments and fixes the report.',
   chips: ['fling setup', 'Claude Code', 'Who can open it', 'Review page', 'Comments'],
-  outro: 'One command to set up, and from then on you just ask: “fling this”. The review link is the one to share; comments come back to you and to Claude. Rather not use a terminal? The next walkthrough does the same from Claude’s app.',
+  outro: 'One command to set up, and from then on you just ask: “fling this”. The review link is the one to share; comments come back to you and to Claude. Using another agent? Anything that supports MCP, or can run the CLI and use skills, works the same way. Rather not use a terminal? The next walkthrough does it from Claude’s app.',
   endTitle: 'Throw it. Get a link.',
   personas: {
     you: { name: 'Sam Rivera', initials: 'SR', label: 'You (Sam)' },
