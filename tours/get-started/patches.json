@@ -1,0 +1,90 @@
+{
+ "get-started.png": [
+  {
+   "box": [
+    32.41,
+    40.7,
+    18.17,
+    1.39
+   ],
+   "parts": [
+    {
+     "text": "https://infinitesoftwarefactory.com.",
+     "mono": true
+    }
+   ],
+   "fg": "#565b65",
+   "bg": "#ffffff"
+  },
+  {
+   "box": [
+    41.46,
+    59.77,
+    20.9,
+    1.86
+   ],
+   "parts": [
+    {
+     "text": "https://infinitesoftwarefactory.com",
+     "mono": true
+    }
+   ],
+   "fg": "#151a28",
+   "bg": "#ebe9e9"
+  },
+  {
+   "box": [
+    52.32,
+    64.17,
+    29.08,
+    1.67
+   ],
+   "parts": [
+    {
+     "text": "https://infinitesoftwarefactory.com",
+     "mono": true
+    },
+    {
+     "text": " adds this one and keeps the",
+     "mono": false
+    }
+   ],
+   "fg": "#565b65",
+   "bg": "#ffffff"
+  },
+  {
+   "box": [
+    57.89,
+    78.37,
+    25.25,
+    1.86
+   ],
+   "parts": [
+    {
+     "text": "https://my-app.infinitesoftwarefactory.com,",
+     "mono": true
+    }
+   ],
+   "fg": "#323744",
+   "bg": "#ffffff"
+  }
+ ],
+ "site-access.png": [
+  {
+   "box": [
+    32.85,
+    27.44,
+    22.02,
+    1.63
+   ],
+   "parts": [
+    {
+     "text": "q3-support-report.infinitesoftwarefactory.com",
+     "mono": false
+    }
+   ],
+   "fg": "#3468dc",
+   "bg": "#ffffff"
+  }
+ ]
+}

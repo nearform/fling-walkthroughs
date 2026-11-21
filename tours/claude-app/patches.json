@@ -1,0 +1,41 @@
+{
+ "get-started.png": [
+  {
+   "box": [
+    57.93,
+    14.17,
+    25.22,
+    1.89
+   ],
+   "parts": [
+    {
+     "text": "https://my-app.infinitesoftwarefactory.com,",
+     "mono": true
+    }
+   ],
+   "fg": "#323744",
+   "bg": "#ffffff"
+  },
+  {
+   "box": [
+    33.43,
+    69.77,
+    24.13,
+    1.63
+   ],
+   "parts": [
+    {
+     "text": "$ ",
+     "mono": true,
+     "dim": true
+    },
+    {
+     "text": "https://infinitesoftwarefactory.com/mcp",
+     "mono": true
+    }
+   ],
+   "fg": "#151a28",
+   "bg": "#ebe9e9"
+  }
+ ]
+}

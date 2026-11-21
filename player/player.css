@@ -281,9 +281,21 @@ p { margin: 0; }
   opacity: 0;
 }
 .view img.on { opacity: 1; }
+/* text painted over a screenshot (see patchLayer in player.js); sized from the view's width */
+.view { container-type: inline-size; }
+.view .patches { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.view .patches.on { opacity: 1; }
+.patch {
+  position: absolute; display: flex; align-items: center;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1; white-space: pre;
+}
+.patch .line { font-size: calc(var(--k, 1) * 1em); }
+.patch .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+.patch .dim { opacity: 0.62; }
+.patch .measure { position: absolute; visibility: hidden; }
 @media (prefers-reduced-motion: no-preference) {
   .view .pan { transition: transform 1100ms var(--ease-in-out), transform-origin 1100ms var(--ease-in-out); }
-  .view img { transition: opacity 380ms ease; }
+  .view img, .view .patches { transition: opacity 380ms ease; }
 }
 .ring {
   position: absolute; border-radius: 10px;

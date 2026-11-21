@@ -1,0 +1,20 @@
+{
+ "server-tab.png": [
+  {
+   "box": [
+    33.86,
+    19.3,
+    26.89,
+    1.39
+   ],
+   "parts": [
+    {
+     "text": "https://triage-desk.infinitesoftwarefactory.com/api/*",
+     "mono": true
+    }
+   ],
+   "fg": "#151a28",
+   "bg": "#ffffff"
+  }
+ ]
+}

@@ -23,6 +23,7 @@ tours/<id>/
   scenes.js     the steps: captions, terminal lines, which shot to show, where to point
   tour.json     title, description and poster image for the page's meta tags
   capture.mjs   takes this tour's screenshots on the real Fling
+  patches.json  where the Fling's address appears in the shots, so a build for another Fling can repaint it
   shots/        the screenshots (1440×900 at 2×)
 player/         the player (page.html, player.js, player.css) and tours.js, the list of tours
 home/           the landing page

@@ -206,11 +206,46 @@
 
   // ---------- the browser ----------
   const imgs = new Map()
+  const layers = new Map()
+  // Text painted over a screenshot: a build for another Fling swaps its address in the shots
+  // (window.TOUR_PATCHES, from tours/<id>/patches.json). Positions are % of the view, like ring.
+  const patchLayer = src => {
+    const list = window.TOUR_PATCHES?.[src.split('/').pop()]
+    if (!list?.length) return null
+    const layer = $('div', { className: 'patches', ariaHidden: 'true' })
+    const line = (parts, key) => $('span', { className: 'line' },
+      ...parts.map(q => $('span', { className: [q.mono && 'mono', q.dim && 'dim'].filter(Boolean).join(' '), textContent: q[key] })))
+    for (const p of list) {
+      const [x, y, w, h] = p.box
+      // the old text, laid out invisibly, tells us the font size that matches the screenshot
+      const el = $('div', { className: 'patch' }, line(p.parts, 'text'), line(p.parts, 'from'))
+      el.lastChild.classList.add('measure')
+      el.dataset.w = w
+      Object.assign(el.style, {
+        left: `${x}%`, top: `${y - h * 0.2}%`, minWidth: `${w}%`, height: `${h * 1.4}%`,
+        background: p.bg, color: p.fg, fontSize: `${h * 0.625 * 0.75}cqw`,
+      })
+      layer.append(el)
+    }
+    pan.insertBefore(layer, ring)
+    return layer
+  }
+  const fitPatches = layer => {
+    const W = pan.clientWidth
+    if (!layer || !W) return
+    for (const el of layer.children) {
+      el.style.removeProperty('--k')
+      const k = (el.dataset.w / 100 * W) / (el.lastChild.offsetWidth || 1)
+      el.style.setProperty('--k', Math.min(1.6, Math.max(0.6, k)).toFixed(3))
+    }
+  }
   const shotImg = src => {
     if (!imgs.has(src)) {
       const img = $('img', { src, alt: '', decoding: 'async' })
       pan.insertBefore(img, ring)
       imgs.set(src, img)
+      const layer = patchLayer(src)
+      if (layer) layers.set(src, layer)
     }
     return imgs.get(src)
   }
@@ -220,7 +255,9 @@
     if (!shot) return
     if (shot.src !== shownSrc) {
       for (const [src, img] of imgs) img.classList.toggle('on', src === shot.src)
+      for (const [src, layer] of layers) layer.classList.toggle('on', src === shot.src)
       shownSrc = shot.src
+      fitPatches(layers.get(shot.src))
       shotImg(shot.src).alt = shot.alt ?? shot.caption ?? ''
     }
     url.innerHTML = `<span class="lock">🔒</span>${esc(shot.url ?? '')}`

@@ -4,8 +4,8 @@
 //   node build.mjs [--fling <address>] [tour…]
 // --fling is the Fling the site is published on (default fling.labs.nearform.com). The tours were
 // recorded on another Fling, so its address in the terminal lines, Claude's replies and the
-// browser bar is swapped for this one. Text inside the screenshots can't be swapped: retake them
-// on that Fling (FLING=<address> node tours/<id>/capture.mjs …) to match everywhere.
+// browser bar is swapped for this one, and painted over the screenshots where it appears there
+// (tours/<id>/patches.json, made by capture/text-patches.mjs).
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { RECORDED_ON } from './capture/config.mjs'
 
@@ -30,7 +30,15 @@ for (const t of tours) {
     .replaceAll('{{title}}', esc(meta.title))
     .replaceAll('{{description}}', esc(meta.description))
     .replaceAll('{{poster}}', `${SITE_URL}/${t}/${meta.poster}`))
-  writeFileSync(`${out}/scenes.js`, swap(readFileSync(`tours/${t}/scenes.js`, 'utf8')))
+  // text in the screenshots: paint the new address over the old (tours/<id>/patches.json)
+  const pf = `tours/${t}/patches.json`
+  let patches = ''
+  if (FLING !== RECORDED_ON && existsSync(pf)) {
+    const all = JSON.parse(readFileSync(pf, 'utf8'))
+    for (const k of Object.keys(all)) all[k] = all[k].filter(p => !p.skip).map(p => ({ ...p, parts: p.parts.map(q => ({ ...q, from: q.text, text: swap(q.text) })) }))
+    patches = `\nwindow.TOUR_PATCHES = ${JSON.stringify(all)}\n`
+  }
+  writeFileSync(`${out}/scenes.js`, swap(readFileSync(`tours/${t}/scenes.js`, 'utf8')) + patches)
   cpSync(`tours/${t}/shots`, `${out}/shots`, { recursive: true })
   for (const f of ['player.css', 'player.js', 'tours.js']) cpSync(`player/${f}`, `${out}/player/${f}`)
   console.log(`built ${out}`)
