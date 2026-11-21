@@ -47,7 +47,7 @@
   .home .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
   /* "isn't this just Artifacts?": a native popover, centred over a dimmed page */
   .vs {
-    inline-size: min(64rem, calc(100% - 2rem)); max-block-size: calc(100svh - 2rem); overflow: auto;
+    inline-size: min(68rem, calc(100% - 2rem)); max-block-size: calc(100svh - 2rem); overflow: auto;
     margin: auto; padding: clamp(1.25rem, 1rem + 2vw, 2.25rem);
     border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); color: var(--ink);
     box-shadow: 0 30px 80px -30px oklch(0% 0 0 / 0.6);
@@ -55,8 +55,20 @@
   .vs:popover-open { display: grid; gap: 1rem; }
   .vs::backdrop { background: oklch(0% 0 0 / 0.45); }
   .vs h2 { font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.2rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800; }
-  .vs .intro { color: var(--muted); max-inline-size: 60ch; }
-  .vs dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); gap: 1.1rem 1.75rem; }
+  .vs .intro { color: var(--muted); font-size: 1.05rem; }
+  .vs::before { content: ""; position: absolute; inset: 0 0 auto; block-size: 6px; background: var(--rainbow); }
+  .vs dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); gap: 0.9rem; }
+  .vs dl > div {
+    display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto 1fr; column-gap: 0.85rem; align-items: start;
+    padding: 1rem 1.1rem; border-radius: calc(var(--radius) * 0.75);
+    border: 1px solid color-mix(in oklab, var(--c) 30%, var(--line));
+    background: color-mix(in oklab, var(--c) 7%, var(--card));
+  }
+  .vs .ico {
+    grid-row: span 2; display: grid; place-items: center; inline-size: 2.5rem; aspect-ratio: 1; border-radius: 0.75rem;
+    background: color-mix(in oklab, var(--c) 22%, var(--card)); color: color-mix(in oklab, var(--c) 70%, var(--ink));
+  }
+  .vs .ico svg { inline-size: 1.35rem; }
   .vs dt { font-weight: 750; margin-block-end: 0.2rem; }
   .vs dd { color: var(--muted); margin: 0; }
   .vs .foot { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
@@ -130,15 +142,15 @@
 <div id="vs-artifacts" popover class="vs">
   <button class="icon-btn close" popovertarget="vs-artifacts" popovertargetaction="hide" aria-label="Close">✕</button>
   <span class="eyebrow">Fair question</span>
-  <h2>Isn’t this just Artifacts?</h2>
+  <h2>Isn’t this just <span class="rainbow-text">Artifacts?</span></h2>
   <p class="intro">Artifacts are great for trying something out inside a chat. Fling is for the real work that comes after: getting it reviewed, collecting answers, running it and keeping it, with your team.</p>
   <dl>
-    <div><dt>Reviews, live and in place</dt><dd>People comment on the live page, pinned to the words they mean. Your agent reads the comments, makes the fix and resolves each thread on the version that fixed it.</dd></div>
-    <div><dt>Structured data, not just comments</dt><dd>Forms collect labels, scores, sign-offs or a survey on any page. Every answer is stored with the site, for your agent to read and for you to download as CSV or JSONL.</dd></div>
-    <div><dt>Servers that do real work</dt><dd>Put a small server beside the page. It keeps API keys as secrets, knows who is calling and writes logs, and it’s versioned and rolled back with the page.</dd></div>
-    <div><dt>Built for teams</dt><dd>Open a site to groups, not just people. A team site gives each ticket its own page, with its own owners, versions, review and sign-off.</dd></div>
-    <div><dt>Part of how you ship</dt><dd>Publish plans, specs and previews from CI on every pull request, or from any agent that supports MCP or can run the CLI. Every publish is a version you can roll back.</dd></div>
-    <div><dt>You own it</dt><dd>Your organisation’s own Fling, at your own address, behind your company sign-in. The sites, comments and answers stay with you, not in one chat or one person’s account.</dd></div>
+    <div style="--c: var(--red)"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span><dt>Reviews, live and in place</dt><dd>People comment on the live page, pinned to the words they mean. Your agent reads the comments, makes the fix and resolves each thread on the version that fixed it.</dd></div>
+    <div style="--c: var(--orange)"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h1M12 8h4M8 12h1M12 12h4M8 16h1M12 16h4"/></svg></span><dt>Structured data, not just comments</dt><dd>Forms collect labels, scores, sign-offs or a survey on any page. Every answer is stored with the site, for your agent to read and for you to download as CSV or JSONL.</dd></div>
+    <div style="--c: var(--yellow)"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></span><dt>Servers that do real work</dt><dd>Put a small server beside the page. It keeps API keys as secrets, knows who is calling and writes logs, and it’s versioned and rolled back with the page.</dd></div>
+    <div style="--c: var(--green)"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 5.5 4.8"/></svg></span><dt>Built for teams</dt><dd>Open a site to groups, not just people. A team site gives each ticket its own page, with its own owners, versions, review and sign-off.</dd></div>
+    <div style="--c: var(--blue)"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2.2"/><circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M6 7.2v9.6M18 11.2c0 4-6 3-11 6"/></svg></span><dt>Part of how you ship</dt><dd>Publish plans, specs and previews from CI on every pull request, or from any agent that supports MCP or can run the CLI. Every publish is a version you can roll back.</dd></div>
+    <div style="--c: var(--violet)"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/></svg></span><dt>You own it</dt><dd>Your organisation’s own Fling, at your own address, behind your company sign-in. The sites, comments and answers stay with you, not in one chat or one person’s account.</dd></div>
   </dl>
   <div class="foot">
     <a class="btn" href="get-started/">▶&nbsp; See it in the first walkthrough</a>
