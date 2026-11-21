@@ -3,12 +3,12 @@
 //   node tours/claude-app/capture.mjs getstarted|consent|live|review|after
 import { createHash, randomBytes } from 'node:crypto'
 import { open, shoot } from '../../capture/shoot.mjs'
-import { ORIGIN } from '../../capture/config.mjs'
+import { ORIGIN, SITES } from '../../capture/config.mjs'
 import { measure } from '../../capture/measure.mjs'
 
 const dir = new URL('./shots/', import.meta.url).pathname
 const SITE = 'pricing-launch'
-const siteUrl = `https://${SITE}.infinitesoftwarefactory.com/`
+const siteUrl = `https://${SITE}.${SITES}/`
 const review = `${ORIGIN}/review/${SITE}`
 const phase = process.argv[2]
 
@@ -21,7 +21,7 @@ if (phase === 'getstarted') {
   const p = t.page
   console.log('get-started', JSON.stringify(await measure(p, {
     step: p.getByText('Add to Claude (Desktop, web, mobile)'),
-    url: p.getByText(/infinitesoftwarefactory\.com\/mcp$/),
+    url: p.getByText(new RegExp(`${SITES.replaceAll('.', '\\.')}/mcp$`)),
   })))
   await t.close()
 }

@@ -2,11 +2,11 @@
 //   node tours/get-started/capture.mjs before   # sign-in page, live site, sites list, access, Ana's review
 //   node tours/get-started/capture.mjs after    # the fixed site, the resolved threads
 import { open, shoot } from '../../capture/shoot.mjs'
-import { ORIGIN } from '../../capture/config.mjs'
+import { ORIGIN, SITES } from '../../capture/config.mjs'
 
 const dir = new URL('./shots/', import.meta.url).pathname
 const SITE = 'q3-support-report'
-const siteUrl = `https://${SITE}.infinitesoftwarefactory.com/`
+const siteUrl = `https://${SITE}.${SITES}/`
 const review = `${ORIGIN}/review/${SITE}`
 const phase = process.argv[2]
 const only = process.argv[3]?.split(',')

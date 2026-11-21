@@ -1,7 +1,7 @@
 // Screenshots for "A site that does real work": the triage desk under fling dev, then live.
 //   node tours/site-server/capture.mjs local|live|server
 import { open } from '../../capture/shoot.mjs'
-import { ORIGIN } from '../../capture/config.mjs'
+import { ORIGIN, SITES } from '../../capture/config.mjs'
 import { measure } from '../../capture/measure.mjs'
 
 const dir = new URL('./shots/', import.meta.url).pathname
@@ -25,7 +25,7 @@ async function triage(url, sample, file, as = 'you') {
 }
 
 if (phase === 'local') await triage('http://localhost:47180/', 'Export bug', `${dir}local-result.png`)
-if (phase === 'live') await triage(`https://${SITE}.infinitesoftwarefactory.com/`, 'Double charge', `${dir}live-result.png`)
+if (phase === 'live') await triage(`https://${SITE}.${SITES}/`, 'Double charge', `${dir}live-result.png`)
 if (phase === 'server') {
   const t = await open('you', `${ORIGIN}/sites/${SITE}`)
   const tab = t.page.getByRole('tab', { name: /Server/ }).or(t.page.getByRole('link', { name: /^Server/ }))

@@ -1,6 +1,6 @@
 # Fling walkthroughs
 
-Self-playing walkthroughs of Fling with Claude, published at https://fling-tour.fling.labs.nearform.com (the site `fling-tour` on the fling.labs.nearform.com Fling). The tours were recorded on infinitesoftwarefactory.com, which is still where `capture/` points. README.md has the layout and commands. This file covers how to change things.
+Self-playing walkthroughs of Fling with Claude, published at https://fling-tour.fling.labs.nearform.com (the site `fling-tour` on the fling.labs.nearform.com Fling). The tours were recorded on infinitesoftwarefactory.com and are also published there (same site name). README.md has the layout and commands. This file covers how to change things.
 
 ## The rules
 
@@ -15,15 +15,16 @@ Self-playing walkthroughs of Fling with Claude, published at https://fling-tour.
 
 ## Publishing the site
 
-The site is `fling-tour` on the fling.labs.nearform.com Fling (public). The home page is the root of the site, and each tour is its own Path (`/<id>/`), so tours can be republished one at a time. When asked to publish (or "fling it"):
+The site is `fling-tour`, public, on two Flings: fling.labs.nearform.com (the main one) and infinitesoftwarefactory.com. Publish to the one the user names. If they don't say, ask, and suggest labs. The home page is the root of the site, and each tour is its own Path (`/<id>/`), so tours can be republished one at a time. When asked to publish (or "fling it"):
 
-1. `rm -rf dist && node build.mjs` builds every tour into `dist/<id>/`. `node build.mjs <id>` builds one.
-2. For the home page, copy `home/index.html` and `player/player.css` into a folder of their own (e.g. `dist-home/`, kept outside `dist/`). `build.mjs` doesn't do this.
-3. `node scan.mjs` (and `node scan.mjs dist-home`). Stop if either reports anything.
-4. Fling with the Fling tools on server `fling.labs.nearform.com`, site `fling-tour`. It is an existing site, so leave access alone.
+1. `rm -rf dist && node build.mjs --fling <address>` builds every tour into `dist/<id>/` and the home page into `dist-home/`, for that Fling (default `fling.labs.nearform.com`). `node build.mjs --fling <address> <id>` builds one tour.
+   - `--fling` swaps the recorded Fling's address (`RECORDED_ON` in `capture/config.mjs`) for the target's in the terminal lines, Claude's replies, the browser bar and the preview image. Build separately for each Fling: a build for one has the wrong addresses for the other.
+   - Text inside the screenshots still shows the recorded Fling. To change that, retake the shots on the target Fling (below).
+2. `node scan.mjs` (and `node scan.mjs dist-home`). Stop if either reports anything.
+3. Fling with the Fling tools on the same server you built for, site `fling-tour`. It is an existing site, so leave access alone.
    - Each changed tour: `fling_deploy` with path `dist/<id>` and `sitePath: "<id>"`. CLI: `fling deploy ./dist/<id> --name fling-tour --path <id>`.
    - The home page, if it changed: `fling_deploy` with path `dist-home`. This replaces the root files and leaves the tour Paths alone.
-5. Give the user the review link and the site URL that come back.
+4. Give the user the review link and the site URL that come back.
 
 ## How a tour works
 
@@ -46,7 +47,7 @@ The site is `fling-tour` on the fling.labs.nearform.com Fling (public). The home
 
 **Edit a step's words:** change `tours/<id>/scenes.js`, then `node build.mjs <id>` and preview `dist/<id>/`.
 
-**Retake shots:** both capture Chromes must be running (`node capture/login.mjs you` / `reviewer`, signed in). Run `node tours/<id>/capture.mjs <phase> [id,id]`. Phases follow the story (e.g. `before`/`after` a fix), because some shots depend on state that earlier steps create (comments posted, a site redeployed). Check the result with `capture/contact.sh <id>`. Look at the images yourself before using them.
+**Retake shots:** both capture Chromes must be running (`node capture/login.mjs you` / `reviewer`, signed in). Run `node tours/<id>/capture.mjs <phase> [id,id]`. They capture on infinitesoftwarefactory.com; `FLING=<address>` captures on another Fling (sign the capture Chromes in there, and publish the tour's demo sites there first). If you retake a whole tour on another Fling, update its transcripts and `scenes.js` lines from that run too, and `RECORDED_ON` if every tour moves. Phases follow the story (e.g. `before`/`after` a fix), because some shots depend on state that earlier steps create (comments posted, a site redeployed). Check the result with `capture/contact.sh <id>`. Look at the images yourself before using them.
 
 **Add a step that needs a new shot:** add it to the tour's `capture.mjs` under an id, capture it, measure the ring/cursor, then add the step to `scenes.js`.
 

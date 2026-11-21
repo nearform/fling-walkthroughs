@@ -2,7 +2,7 @@
 // screenshots for "Label an eval set" on the way.
 //   node tours/eval-labelling/capture.mjs [ids]   ids: ana, flag, sam, progress, home
 import { open, shoot } from '../../capture/shoot.mjs'
-import { ORIGIN } from '../../capture/config.mjs'
+import { ORIGIN, SITES } from '../../capture/config.mjs'
 
 const dir = new URL('./shots/', import.meta.url).pathname
 const SITE = 'support-evals'
@@ -53,7 +53,7 @@ async function saveAndNext(p) {
   await p.getByRole('radio', { name: VERDICT.pass }).waitFor({ timeout: 15000 }).catch(() => {})
 }
 
-if (want('home')) await shoot('reviewer', { url: `https://${SITE}.infinitesoftwarefactory.com/`, file: `${dir}home.png` })
+if (want('home')) await shoot('reviewer', { url: `https://${SITE}.${SITES}/`, file: `${dir}home.png` })
 
 if (want('ana')) {
   const t = await open('reviewer', reviewOf('s01'))

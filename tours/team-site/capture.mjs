@@ -2,11 +2,11 @@
 //   node tours/team-site/capture.mjs [ids]
 // Order matters: Ana's review and sign-offs come before the progress shot.
 import { open, shoot } from '../../capture/shoot.mjs'
-import { ORIGIN } from '../../capture/config.mjs'
+import { ORIGIN, SITES } from '../../capture/config.mjs'
 
 const dir = new URL('./shots/', import.meta.url).pathname
 const SITE = 'payments-plans'
-const siteUrl = `https://${SITE}.infinitesoftwarefactory.com/`
+const siteUrl = `https://${SITE}.${SITES}/`
 const reviewOf = folder => `${ORIGIN}/review/${SITE}?path=${encodeURIComponent(`/${folder}/`)}`
 const only = process.argv[2]?.split(',')
 const want = id => !only || only.includes(id)

@@ -29,7 +29,7 @@ home/           the landing page
 capture/        shared capture tooling: Chrome profiles, redaction, measuring
 demos/          the sites the tours publish (reports, a team site, an eval set, a site server)
 transcripts/    redacted terminal output the tours' lines are taken from
-build.mjs       builds dist/
+build.mjs       builds dist/ and dist-home/ for one Fling (--fling <address>)
 scan.mjs        refuses to publish dist/ if anything private is in it
 ```
 
@@ -37,8 +37,9 @@ scan.mjs        refuses to publish dist/ if anything private is in it
 
 ```sh
 npm install
-node build.mjs             # every tour → dist/<id>/
-node build.mjs team-site   # just one tour
+node build.mjs                                   # every tour → dist/<id>/, home → dist-home/
+node build.mjs --fling infinitesoftwarefactory.com   # the same, with that Fling's addresses
+node build.mjs team-site                         # just one tour
 node scan.mjs              # check dist/ for private data
 npx serve dist             # or any static server
 ```
@@ -57,6 +58,7 @@ node capture/login.mjs you           # opens a Chrome; sign in as the first acco
 node capture/login.mjs reviewer      # the same for the second account
 node tours/get-started/capture.mjs before        # each capture.mjs lists its phases and shot ids
 node tours/get-started/capture.mjs before review # just one shot
+FLING=fling.labs.nearform.com node tours/get-started/capture.mjs before   # on another Fling
 node capture/contact.sh get-started              # contact sheet in tmp/ to check by eye
 ```
 
