@@ -15,12 +15,19 @@
 <style>
   /* The home page is the tours' end card on its own: the same frame, one card filling the page. */
   .home { block-size: auto; min-block-size: 100svh; grid-template-rows: auto minmax(0, 1fr) auto; }
-  .home .card-slot { place-items: center; padding-block: clamp(1.25rem, 0.5rem + 3vh, 2.75rem); }
-  .home .agents { color: var(--muted); max-inline-size: 60ch; margin-block-start: -0.4rem; }
-  .home .card-inner { inline-size: min(80rem, 100%); gap: 1.1rem; }
+  .home .card-slot { place-items: center; padding: clamp(1rem, 0.5rem + 2vh, 2rem) clamp(1rem, 0.5rem + 2vw, 2.5rem); }
+  .home .agents { color: var(--muted); max-inline-size: 60ch; }
+  .home .card-inner { inline-size: min(100rem, 100%); gap: 1rem; }
   /* the hero: text and a real screenshot side by side when there is room, stacked when not */
-  .home .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(26rem, 100%), 1fr)); gap: clamp(1.5rem, 1rem + 2vw, 3rem); align-items: center; }
-  .home .hero-text { display: grid; gap: 1.1rem; justify-items: start; }
+  .home .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(24rem, 100%), 1fr)); gap: clamp(1.25rem, 0.5rem + 2vw, 3rem); align-items: center; }
+  .home .hero-text { display: grid; gap: 0.85rem; justify-items: start; }
+  /* a compact hero, so the walkthroughs show without scrolling */
+  .home .hero h1 { font-size: clamp(2rem, 1.2rem + 2.4vw, 3.4rem); }
+  .home .hero .lead { font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem); max-inline-size: 60ch; }
+  .home .hero .agents { font-size: 0.95rem; margin: 0; }
+  .home .hero .chip { font-size: 0.78rem; }
+  .home .hero-shot { max-block-size: 22rem; }
+  .home .hero-shot img { object-fit: cover; object-position: top left; block-size: 100%; }
   .home .hero-shot { display: block; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 24px 48px -28px oklch(0% 0 0 / 0.5); }
   .home .hero-shot img { display: block; inline-size: 100%; block-size: auto; }
   .home .next-tours { grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr)); gap: 1rem; }
