@@ -1,14 +1,14 @@
 # Fling walkthroughs
 
-Five short, self-playing walkthroughs of [Fling](https://infinitesoftwarefactory.com) used with Claude. Each one pairs a terminal (or Claude chat) with a browser and steps through a real task:
+Five short, self-playing walkthroughs of [Fling](https://infinitesoftwarefactory.com) used with Claude. Each one starts with a problem, then plays through how Fling solves it, with a terminal (or Claude chat) beside a browser:
 
-| Tour | What it shows |
-| --- | --- |
-| `get-started` | Set up, publish a page, choose who sees it, get it reviewed |
-| `team-site` | One address for the team, a page per ticket, reviewed one by one |
-| `eval-labelling` | A page per sample, a blind form, and the labels back as data |
-| `site-server` | A small server beside the page: an API key, Claude, logs |
-| `claude-app` | Claude Desktop, web or phone, with no terminal |
+| Tour | The problem | How |
+| --- | --- | --- |
+| `get-started` | Claude made it. Now get it in front of people. | Ask Claude Code to fling it, choose who sees it, get comments Claude acts on |
+| `claude-app` | No terminal? Do it from the chat. | Fling as a connector in Claude Desktop, on the web or your phone |
+| `team-site` | Every ticket’s plan, in one place. | One team site, a page per ticket, each reviewed and signed off on its own |
+| `eval-labelling` | Model outputs need human judges. | A page per sample, a blind form, and the labels back as data |
+| `site-server` | It works on localhost. Now share it. | A small server beside the page: an API key, Claude, logs |
 
 Live at https://fling-tour.fling.labs.nearform.com.
 

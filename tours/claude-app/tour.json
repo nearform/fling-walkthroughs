@@ -1,3 +1,5 @@
-{ "title": "Just ask Claude · a Fling walkthrough",
-  "description": "Fling in Claude Desktop, on the web or your phone, with no terminal: add it as a connector, ask Claude for a page, choose who sees it, and let Claude act on the review.",
-  "poster": "shots/review-comment.png" }
+{
+  "title": "Just ask Claude · a Fling walkthrough",
+  "description": "Most people who work with Claude never open a terminal. Add your Fling to Claude as a connector, in Claude Desktop, on the web or on your phone. Claude publishes what it makes, you choose who sees it, and Claude acts on the comments.",
+  "poster": "shots/review-comment.png"
+}

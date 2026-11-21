@@ -1,3 +1,5 @@
-{ "title": "A team site, a Path per ticket · a Fling walkthrough",
-  "description": "One address for the team, a Path per Jira or GitHub ticket published by people, Claude or CI, and a review and sign-off for each ticket.",
-  "poster": "shots/home.png" }
+{
+  "title": "A team site, a Path per ticket · a Fling walkthrough",
+  "description": "A team’s plans and specs end up spread across PR comments, docs and Slack screenshots. Ask Claude for one site for the payments team. Each Jira or GitHub ticket gets its own page, published by Claude or by CI, with its own review and a sign-off form.",
+  "poster": "shots/home.png"
+}

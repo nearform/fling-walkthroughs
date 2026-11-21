@@ -1,3 +1,5 @@
-{ "title": "Your first fling · a Fling walkthrough",
-  "description": "Install the CLI, let Claude Code publish a report, choose who can open it, and get a colleague’s review back as comments Claude acts on.",
-  "poster": "shots/review-pin.png" }
+{
+  "title": "Your first fling · a Fling walkthrough",
+  "description": "Claude can turn your data into a polished report in a minute. Install the CLI and ask Claude Code to “fling this”. You choose who can open it, a colleague comments on the page itself, and Claude reads the comments and fixes the report.",
+  "poster": "shots/review-pin.png"
+}

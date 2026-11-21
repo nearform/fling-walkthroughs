@@ -1,3 +1,5 @@
-{ "title": "A site that does real work · a Fling walkthrough",
-  "description": "Claude builds a support triage desk: a page and a small server that keeps an API key, asks Claude to triage a ticket and knows who is calling. Then fling dev, a deploy that waits for its secret, and the logs.",
-  "poster": "shots/live-result.png" }
+{
+  "title": "A site that does real work · a Fling walkthrough",
+  "description": "A page that calls Claude needs a backend to make the call, somewhere safe for the API key and a way to know who is using it. Ask Claude for a support triage desk: paste a ticket, and a small server beside the page asks Claude for a category, a priority and a draft reply. The key stays on the server as a site secret.",
+  "poster": "shots/live-result.png"
+}

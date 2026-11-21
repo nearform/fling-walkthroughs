@@ -10,7 +10,8 @@ Self-playing walkthroughs of Fling with Claude, published at https://fling-tour.
    - Pipe recorded output through `node capture/redact-text.mjs`.
    - Run `node scan.mjs` on `dist/` before any publish. The scan must pass.
    - Never commit `capture/profiles/` or `tmp/` (both gitignored; they hold sign-ins).
-3. **Ask before publishing.** Flinging `dist/` changes the live site. Confirm with the user first.
+3. **Problem first, then how.** Every tour, and its card on the home page, opens with the problem it solves, in the reader’s terms. The fix comes after. In `scenes.js`: `titleHtml` is the problem as a headline, `problem` says why it hurts (two sentences or so) and `lead` is how the walkthrough solves it. The player shows them in that order on the opening card. `player/tours.js` `blurb` and the home card’s bold line use the same headline.
+4. **Ask before publishing.** Flinging `dist/` changes the live site. Confirm with the user first.
 
 ## Publishing the site
 
@@ -50,8 +51,9 @@ The site is `fling-tour` on the fling.labs.nearform.com Fling (public). The home
 **Add a step that needs a new shot:** add it to the tour's `capture.mjs` under an id, capture it, measure the ring/cursor, then add the step to `scenes.js`.
 
 **Add a tour:** create `tours/<id>/` with `scenes.js`, `tour.json`, `capture.mjs` and `shots/` (copy an existing tour's shape). Then:
-- add it to `player/tours.js` (the end card's "More walkthroughs")
-- add a card to the hand-written nav in `home/index.html`, and update "five" in its title and meta tags
+- write its `titleHtml` / `problem` / `lead` problem first (rule 3)
+- add it to `player/tours.js` (the end card's "More walkthroughs"), in the order the tours should be watched
+- add a card to the hand-written nav in `home/index.html` (problem headline in bold, then the how), and update "five" in its title and meta tags
 - renumber every tour's `eyebrow` ("Fling walkthrough · N of M")
 - put any site it publishes under `demos/<name>/`
 

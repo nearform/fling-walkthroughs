@@ -1,6 +1,9 @@
 // The walkthrough player. A tour page loads scenes.js (window.TOUR) and then this file, which
 // draws the caption, the terminal, the browser and the controls, and plays the steps in order.
 //
+// The tour: window.TOUR = { id, title, titleHtml (the problem, as a headline), eyebrow, problem, lead (the how),
+//   chips, outro, endTitle, personas, steps }
+//
 // A step:
 //   { chapter, caption, note?, layout?: 'split'|'term'|'shot',
 //     term?:  { kind: 'claude'|'shell'|'chat', title?, clear?, lines: [Line] },  (chat: Claude's app, not a terminal)
@@ -108,8 +111,11 @@
   const drawCard = kind => {
     const inner = $('div', { className: 'card-inner' })
     if (kind === 'intro') {
-      inner.innerHTML = `<span class="eyebrow">${esc(TOUR.eyebrow ?? 'A Fling walkthrough')}</span>
-        <h1>${TOUR.titleHtml ?? esc(TOUR.title)}</h1><p class="lead">${esc(TOUR.lead)}</p>
+      // problem first: the headline and why it hurts, then how the walkthrough solves it
+      inner.innerHTML = `<span class="eyebrow">${esc(TOUR.eyebrow ?? 'A Fling walkthrough')} · ${esc(TOUR.title)}</span>
+        <h1>${TOUR.titleHtml ?? esc(TOUR.title)}</h1>
+        ${TOUR.problem ? `<p class="problem">${esc(TOUR.problem)}</p><span class="eyebrow how">How it works</span>` : ''}
+        <p class="lead">${esc(TOUR.lead)}</p>
         <div class="chips">${(TOUR.chips ?? []).map(c => `<span class="chip">${esc(c)}</span>`).join('')}</div>`
       const start = $('button', { className: 'btn', innerHTML: '▶&nbsp; Play the walkthrough' })
       start.onclick = () => go(1, true)

@@ -338,6 +338,8 @@ p { margin: 0; }
   line-height: 1; letter-spacing: -0.035em; font-weight: 850;
 }
 .rainbow-text { background: var(--rainbow); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.card-inner .problem { font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem); max-inline-size: 52ch; text-wrap: pretty; }
+.card-inner .eyebrow.how { margin-block-start: 0.4rem; }
 .card-inner .lead { font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem); color: var(--muted); max-inline-size: 52ch; }
 .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .chip {
